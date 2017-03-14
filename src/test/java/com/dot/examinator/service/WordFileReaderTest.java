@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,18 +46,24 @@ public class WordFileReaderTest {
         assertEquals("Test-1", exam.getName());
         assertEquals(2, exam.getQuestions().size());
         for (Question question : exam.getQuestions()) {
-            for (Answer answer : question.getAnswers()) {
+             {
+                 List<String> answerBodyList = new ArrayList<>();
+
+                 for (Answer answer : question.getAnswers()) {
+                     answerBodyList.add(answer.getBody());
+                 }
                 if (question.getBody().equals("What is the colour of Apple?")) {
                     answer1.setBody("Red");
                     answer2.setBody("Black");
-                    assertEquals(true, question.getAnswers().contains(answer1));
-                    assertEquals(true, question.getAnswers().contains(answer2));
+                    assertEquals(true, answerBodyList.contains("Red"));
+                    assertEquals(true, answerBodyList.contains("Black"));
                 }
                 if (question.getBody().equals("Capital Of India?")) {
                     answer1.setBody("Mumbai");
                     answer2.setBody("New Delhi");
-                    assertEquals(true, question.getAnswers().contains(answer1));
-                    assertEquals(true, question.getAnswers().contains(answer2));
+
+                    assertEquals(true, answerBodyList.contains("Mumbai"));
+                    assertEquals(true, answerBodyList.contains("New Delhi"));
                 }
 
             }
