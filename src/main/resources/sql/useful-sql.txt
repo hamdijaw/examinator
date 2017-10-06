@@ -1,0 +1,8 @@
+ALTER TABLE question DROP FOREIGN KEY question_ibfk_1;
+ALTER TABLE answer DROP FOREIGN KEY answer_ibfk_1;
+
+ALTER TABLE question ADD COLUMN exam_id int;
+ALTER TABLE question ADD FOREIGN KEY (exam_id) REFERENCES exam(exam_id);
+ALTER TABLE answer ADD COLUMN question_id int;
+ALTER TABLE answer ADD FOREIGN KEY (question_id) REFERENCES exam(question_id);
+alter table answer change isCorrect is_correct  boolean not null DEFAULT 0;

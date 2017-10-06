@@ -85,4 +85,9 @@ public class WordFileReaderCopy implements ExamFileReader {
         }
         return null;
     }
+
+    @Override
+    public Object readFile(File file) throws XmlException, Exception {
+        return null;
+    }
 }

@@ -1,5 +1,7 @@
 package com.dot.examinator.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 /**
@@ -8,12 +10,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "answer")
 public class Answer {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "answer_id")
     private long id;
     private String body;
+    @Column(name = "is_Correct")
     private boolean isCorrect;
+    @JsonManagedReference
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "question_id")
     private Question question;
 
     public Answer() {
@@ -23,7 +30,10 @@ public class Answer {
         this.body = body;
     }
 
-
+    public Answer(String body, Question question) {
+        this.body = body;
+        this.question = question;
+    }
 
     public String getBody() {
         return body;

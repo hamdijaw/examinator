@@ -1,8 +1,13 @@
 package com.dot.examinator.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 //import java.sql.Date;
-import java.util.*;
 
 /**
  * Created by hamid on 11-Mar-17.
@@ -15,14 +20,24 @@ public class Exam {
         this.questions = new HashSet<>();
     }
 
+    public Exam(String name) {
+        this.name = name;
+    }
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "exam_id")
     private long id;
     private String name;
-//    private java.sql.Date createdDate;
-    private java.util.Date createdDate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "exam")
+    @Transient
+    @Column(name = "createdDate")
+    private java.sql.Date createdDate;
+//    private java.util.Date createdDate;
+//    @OneToMany(cascade = CascadeType.ALL)
+    @JsonBackReference
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "exam", fetch = FetchType.EAGER)
 //    @JoinTable(name = "question", joinColumns = @JoinColumn(name = "exam_id"), inverseJoinColumns = @JoinColumn(name = "exam_ID"))
+//    @JoinColumn(name = "exam_id")
     private Set<Question> questions;
 
     public long getId() {
@@ -45,7 +60,10 @@ public class Exam {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+//    public void setCreatedDate(Date createdDate) {
+//        this.createdDate = createdDate;
+//    }
+    public void setCreatedDate(java.sql.Date createdDate) {
         this.createdDate = createdDate;
     }
 

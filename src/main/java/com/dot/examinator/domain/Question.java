@@ -1,9 +1,10 @@
 package com.dot.examinator.domain;
 
-import org.hibernate.annotations.GeneratorType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.Set;
 
 /**
  * Created by hamid on 11-Mar-17.
@@ -17,25 +18,38 @@ public class Question {
 
     public Question(String body) {
         this.body = body;
-        this.answers = new HashSet<>();
+//        this.answers = new HashSet<>();
     }
 
-    public Question(String body, Set<Answer> answers) {
+    public Question(String body, Exam exam) {
+        this.body = body;
+        this.exam = exam;
+    }
+
+/*    public Question(String body, Set<Answer> answers) {
         this.body = body;
         this.answers = answers;
-    }
+    }*/
 
     @Id
     @GeneratedValue
+    @Column(name = "question_id")
     private long id;
 //    @Column(name = "name")
     private String body;
+    @JsonManagedReference
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "exam_id")
     private Exam exam;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+    @JsonBackReference
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", fetch = FetchType.LAZY)
     private Set<Answer> answers;
+    @Transient
     private String answerChoice;//should be List<String>
+    @Transient
     private String correctAnswer;//should be List<String>
+    @Transient
+    @Column(name = "createdDate")
     private java.sql.Date createdDate;
 
     public long getId() {

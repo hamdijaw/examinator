@@ -3,6 +3,9 @@ package com.dot.examinator.service;
 import com.dot.examinator.domain.Answer;
 import com.dot.examinator.domain.Exam;
 import com.dot.examinator.domain.Question;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,10 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -28,11 +31,21 @@ public class WordFileReaderTest {
     @Autowired
     private WordFileReader reader;
 
+    @Before
+    public void setUp() throws Exception {
+
+    }
+
+    @After
+    public void tearDown() throws Exception {
+
+    }
+
     @Test
     public void test2Questions2Answers() {
         Map<String, Object> map = new HashMap<>();
         try {
-            map = reader.readFile("D:\\Dot Projects\\Examinator\\code_base\\sample files\\QuestionsTest1.docx");
+            map = reader.readFile("sample-exams/exam-1.docx");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,14 +86,71 @@ public class WordFileReaderTest {
 
 
     }
-    @Before
-    public void setUp() throws Exception {
 
+//    @Test
+    public void testArraysList() {
+        PropertiesConfiguration propConfig = null;
+
+        try {
+            propConfig = new PropertiesConfiguration("sample.txt");
+        } catch (ConfigurationException e) {
+            e.printStackTrace();
+        }
+
+        List<String> allowedStatusCodes = Arrays.asList("200, 204".split(","));
+        for (String allowedStatusCode : allowedStatusCodes) {
+            System.out.println("allowedStatusCode: " + allowedStatusCode);
+        }
     }
 
-    @After
-    public void tearDown() throws Exception {
+    @Test
+    public void readFile() {
+        List<String> allowedStatusCodes = Arrays.asList("200, 204".split(","));
+        ClassLoader classLoader = getClass().getClassLoader();
+        File fileApache = new File(classLoader.getResource("sample-exams/test.txt").getFile());
+        System.out.println("fileApache: " + fileApache.getAbsolutePath());
+        try {
+            String data = FileUtils.readFileToString(fileApache, Charset.defaultCharset());
+            System.out.println("data: " + data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        System.out.println("***start*****");
+        File directoryDot = new File("./");
+        System.out.println("directoryDot: " + directoryDot.getAbsolutePath());
+        final File[] files = directoryDot.listFiles();
+        Arrays.stream(files).forEach(a -> System.out.println("a: " + a));
+        File directoryDoubleDot = new File("../../");
+        System.out.println("directoryDoubleDot: " + directoryDoubleDot.getAbsolutePath());
+        final File[] files2 = directoryDoubleDot.listFiles();
+        Arrays.stream(files2).forEach(a -> System.out.println("a: " + a));
+        File directoryRoot = new File("/");
+        System.out.println("directoryRoot:" + directoryRoot.getAbsolutePath());
+        System.out.println("***end*****");
+        File file = new File("test.txt");
+//        File file = new File("E:\\code_base\\explore\\per\\examinator\\target\\test-classes\\sample-exams\\test.txt");
+        URL url = getClass().getResource("test.txt");
+        file = new File("/test.txt");
+        System.out.println(file.getAbsolutePath());
+        BufferedReader br = null;
+        FileReader fr = null;
+        try {
+            fr = new FileReader(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        br = new BufferedReader(fr);
+
+        String sCurrentLine;
+
+        try {
+            while ((sCurrentLine = br.readLine()) != null) {
+                System.out.println(sCurrentLine);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

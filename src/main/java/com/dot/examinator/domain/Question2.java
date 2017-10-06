@@ -31,6 +31,7 @@ public class Question2 {
     private Exam exam;
     private String answerChoice;//should be List<String>
     private String correctAnswer;//should be List<String>
+    @Column(name = "createdDate")
     private java.sql.Date createdDate;
 
     public long getId() {

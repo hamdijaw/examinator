@@ -23,6 +23,7 @@ public class Exam2 {
     private long id;
     private String name;
 //    private java.sql.Date createdDate;
+@Column(name = "createdDate")
     private Date createdDate;
 
     public long getId() {
