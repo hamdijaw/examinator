@@ -1,6 +1,7 @@
 package com.dot.examinator.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -34,7 +35,8 @@ public class Exam {
     private java.sql.Date createdDate;
 //    private java.util.Date createdDate;
 //    @OneToMany(cascade = CascadeType.ALL)
-    @JsonBackReference
+//    @JsonBackReference
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "exam", fetch = FetchType.EAGER)
 //    @JoinTable(name = "question", joinColumns = @JoinColumn(name = "exam_id"), inverseJoinColumns = @JoinColumn(name = "exam_ID"))
 //    @JoinColumn(name = "exam_id")
