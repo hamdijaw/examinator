@@ -17,6 +17,7 @@ import java.util.List;
 /**
  * Created by hamid on 12-Mar-17.
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/admin")
 public class AdminController {

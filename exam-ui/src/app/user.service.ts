@@ -7,15 +7,22 @@ import 'rxjs/add/operator/toPromise';
 export class UserService {
 	test: any = "";
 	constructor(private http: Http) { }
+	questions:any[];
+
+	getExams() {
+		debugger
+		return this.http.get('http://localhost:8080/admin/exam/all');
+	}
+
 	getQuestions() {
 		var dataList = {};
-		this.http.get('http://localhost:8080/5/questions')
-			.subscribe(data => {
-				dataList = data.json()
-			}, err => {
-				console.log("Error")
-			});
-			console.log("dataa"+dataList);
+		// this.http.get('http://localhost:8080/5/questions')
+		// 	.subscribe(data => {
+		// 		dataList = data.json()
+		// 	}, err => {
+		// 		console.log("Error")
+		// 	});
+		// 	console.log("dataa"+dataList);
 		return dataList;
 	}
 	authenticateUser() {

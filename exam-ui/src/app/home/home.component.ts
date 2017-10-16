@@ -10,9 +10,23 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 export class HomeComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { }
-
+  dataList:any[];
+  questions:any[];
   ngOnInit() {
+    this.userService.getExams().subscribe(data => {
+  this.dataList = data.json();
+  }, err => {
+      console.log("Error Occured")
+    });    
   }
+
+  selectExam(exam) {
+    debugger
+    console.log("inside selectExam method")
+    this.userService.questions = exam.questions;
+    this.router.navigate(['/exampage']);
+  }
+
   userdata: any = [];
 
   startExam() {

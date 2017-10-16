@@ -4,6 +4,7 @@ import com.dot.examinator.domain.Exam;
 import com.dot.examinator.domain.Question;
 import com.dot.examinator.repository.ExamDao;
 import com.dot.examinator.repository.ExamDaoHibernate;
+import com.dot.examinator.repository.ExamDaoJpa;
 import com.dot.examinator.repository.QuestionDao;
 import org.apache.xmlbeans.impl.common.ConcurrentReaderHashMap;
 import org.hibernate.Session;
@@ -33,6 +34,8 @@ public class WordFileConsumer implements FileConsumer {
     private SessionFactory sessionFactory;
     @Autowired
     ExamDaoHibernate daoHibernate;
+    @Autowired
+    ExamDaoJpa examDaoJpa;
 
 
     public WordFileConsumer() {
@@ -84,7 +87,8 @@ public class WordFileConsumer implements FileConsumer {
 //            questionDao.save(question);
             }
 //            examDao.save(exam);
-            daoHibernate.save(exam);
+//            daoHibernate.save(exam);
+            examDaoJpa.saveExam(exam);
 
         } catch (Exception e) {
             e.printStackTrace();

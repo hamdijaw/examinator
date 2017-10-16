@@ -1,8 +1,10 @@
-<label>Question 1) </label>
+<label>Question {{currentIndex + 1}} )</label>
 <table>
   <tbody>
     <tr>
-      {{questionVal.body}}
+      {{questions[currentIndex].body}}
     </tr>
   </tbody>
 </table>
+<button (click)='previousQuestion()'>previous</button>
+<button (click)='nextQuestion()'>next</button>

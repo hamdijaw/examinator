@@ -1,8 +1,15 @@
 <p>
- aaaa home works!
+ User Home Page!
 </p>
 <label>User</label>
 <label>ABC</label>
 <button (click)="startExam()">English</button>
 <!-- <button [disabled]="loading" class="btn btn-primary" (click)="onClickMe()">Login</button> -->
 {{userdata|json}}
+
+<p>Exams:</p>
+<ul (click)="selectExam()">
+  <li *ngFor="let exam of dataList" (click)="selectExam(exam)" >
+        <a href="#" [routerLink]="['exampage']">{{ exam.name }}</a>    
+  </li>
+</ul>

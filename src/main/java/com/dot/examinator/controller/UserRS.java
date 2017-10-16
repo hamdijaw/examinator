@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserRS {
@@ -18,7 +19,6 @@ public class UserRS {
     @Autowired
     private QuestionDaoJpa questionDaoJpa;
 
-    @CrossOrigin
     @GetMapping(name = "/authenticate")
     public String authenticateUser() {
         System.out.println("*******************");
@@ -26,7 +26,6 @@ public class UserRS {
         return "Authenticated";
     }
 
-    @CrossOrigin
     @GetMapping("/exam")
     public Exam getQuestions() {
         System.out.println("********EXAM***********");
@@ -34,7 +33,6 @@ public class UserRS {
         return exam;
     }
 
-    @CrossOrigin
     @GetMapping("/{examId}/questions")
     public List getAllQuestionsByExam(@PathVariable long examId) {
         System.out.println("********EXAM***********");

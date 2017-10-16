@@ -11,7 +11,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { ExampageComponent } from './exampage/exampage.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, 
+    children: [
+      {path: 'exampage', component: ExampageComponent}
+    ] },
   { path: 'login', component: LoginComponent },
   { path: 'exampage', component: ExampageComponent }
 ]

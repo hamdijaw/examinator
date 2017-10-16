@@ -14,13 +14,19 @@ public class ExamDaoJpa {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Exam getArticleById(long articleId) {
+    public void saveExam(Exam exam) {
         System.out.println("*********JPA called");
-        return entityManager.find(Exam.class, articleId);
+        entityManager.persist(exam);
+        System.out.println("******Exam saved successfully******");
     }
     @SuppressWarnings("unchecked")
     public List<Exam> getAllArticles() {
         String hql = "FROM Exam as atcl ORDER BY atcl.examId";
         return (List<Exam>) entityManager.createQuery(hql).getResultList();
+    }
+
+    public Exam getArticleById(long articleId) {
+        System.out.println("*********JPA called");
+        return entityManager.find(Exam.class, articleId);
     }
 }
