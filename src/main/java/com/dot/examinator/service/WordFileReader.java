@@ -207,64 +207,12 @@ public class WordFileReader implements ExamFileReader {
                             }
                             answer.setCorrect(isCorrect);
                             answer.setQuestion(question);
-                            question.getAnswers().add(answer);
+                            question.addAnswer(answer);
                         }
                     }
 
                 }
 
-        /*for (XWPFParagraph para : paragraphs) {
-            List<XWPFRun> runs = para.getRuns();
-
-            if (counter == 0) {
-                if (para.getNumFmt() == null) {
-                    exam.setName(para.getText());
-                    counter++;
-                    continue;
-                } else {
-                    throw new Exception("First line in uploaded file should be exam name nad should not conatain numbers," +
-                            " currently this line is numbered: " + para.getText());
-                }
-            } else {
-                if (para.getNumFmt() == null) {
-                    throw new Exception("Questions and Answers both should be numbered");
-                }
-            }
-            if (StringUtils.containsAny("1", para.getNumLevelText())) {
-                question = new Question(para.getText());
-                exam.getQuestions().add(question);
-                counter++;
-                continue;
-            }
-            if (StringUtils.containsAny("2", para.getNumLevelText())) {
-                answer = new Answer(para.getText());
-                boolean isCorrect = false;
-                for (XWPFRun run : runs) {
-                    System.out.println("run.isHighlighted(): " + run.isHighlighted());
-                    if (run.isHighlighted()) {
-                        isCorrect = true;
-                    }
-                }
-                answer.setCorrect(isCorrect);
-                question.getAnswers().add(answer);
-                counter++;
-                continue;
-            }*/
-
-//            counter++;
-
-//            if (para.getNumFmt() != null) {
-//                System.out.println("para.getNumFmt: " + para.getNumFmt());
-//                System.out.println("para.getNumLevelText: " + para.getNumLevelText());
-//                System.out.println("para.getNumID: " + para.getNumID().intValue());
-//                System.out.println("para.getNumIlvl: " + para.getNumIlvl());
-//            }
-//            System.out.println("para.getText()" + para.getText());
-//            System.out.println("para.getParagraphText()" + para.getParagraphText());
-                System.out.println("**************");
-//            if (para.get) {
-//
-//            }
             }
             fis.close();
         } catch (IOException e1) {

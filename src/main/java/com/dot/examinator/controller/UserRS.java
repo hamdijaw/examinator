@@ -5,14 +5,12 @@ import com.dot.examinator.domain.Question;
 import com.dot.examinator.repository.ExamDaoJpa;
 import com.dot.examinator.repository.QuestionDaoJpa;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("user")
+@RestController
+@RequestMapping("/user")
 public class UserRS {
 
     @Autowired

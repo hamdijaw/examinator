@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -71,6 +72,13 @@ public class Question {
 
     public Set<Answer> getAnswers() {
         return answers;
+    }
+
+    public void addAnswer(Answer answer) {
+        if (this.answers == null) {
+            this.answers = new HashSet<>();
+        }
+        this.answers.add(answer);
     }
 
     public void setAnswers(Set<Answer> answers) {
