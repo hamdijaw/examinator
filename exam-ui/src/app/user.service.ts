@@ -2,12 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { UserAnswer } from './UserAnswer';
+
 // http://localhost:8080/examhttp://localhost:8080/user/authenticate
 @Injectable()
 export class UserService {
 	test: any = "";
 	constructor(private http: Http) { }
 	questions:any[];
+
+	saveAnswer(answer:UserAnswer) {
+		debugger
+		return this.http.post('http://localhost:8080/user/answer', answer);
+	}
 
 	getExams() {
 		debugger

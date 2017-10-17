@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   this.dataList = data.json();
   }, err => {
       console.log("Error Occured")
-    });    
+    });
   }
 
   selectExam(exam) {

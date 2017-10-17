@@ -1,10 +1,15 @@
-<label>Question {{currentIndex + 1}} )</label>
-<table>
-  <tbody>
-    <tr>
-      {{questions[currentIndex].body}}
-    </tr>
-  </tbody>
-</table>
-<button (click)='previousQuestion()'>previous</button>
-<button (click)='nextQuestion()'>next</button>
+<div *ngIf="questions.length">
+
+  <label>Question {{currentIndex + 1}} )</label>
+  <table>
+    <tbody>
+      <tr>
+        {{questions[currentIndex].body}}
+      </tr>
+    </tbody>
+  </table>
+  <textarea [(ngModel)]="answerText"></textarea>
+  {{currentIndex}}{{questions.length}}
+  <button (click)='previousQuestion()' [disabled]='prevFlag'>previous</button>
+  <button (click)='nextQuestion()' [disabled] ='nextFlag'>next</button>
+</div>
