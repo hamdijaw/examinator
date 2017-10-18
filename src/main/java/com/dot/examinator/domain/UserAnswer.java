@@ -55,4 +55,26 @@ public class UserAnswer implements Serializable {
     public void setAnswerEntered(String answerEntered) {
         this.answerEntered = answerEntered;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserAnswer that = (UserAnswer) o;
+
+        if (userId != that.userId) return false;
+        if (examId != that.examId) return false;
+        if (questionId != that.questionId) return false;
+        return answerEntered != null ? answerEntered.equals(that.answerEntered) : that.answerEntered == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (userId ^ (userId >>> 32));
+        result = 31 * result + (int) (examId ^ (examId >>> 32));
+        result = 31 * result + (int) (questionId ^ (questionId >>> 32));
+        result = 31 * result + (answerEntered != null ? answerEntered.hashCode() : 0);
+        return result;
+    }
 }

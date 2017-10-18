@@ -7,17 +7,20 @@ import { UserAnswer } from './UserAnswer';
 // http://localhost:8080/examhttp://localhost:8080/user/authenticate
 @Injectable()
 export class UserService {
-	test: any = "";
-	constructor(private http: Http) { }
 	questions:any[];
+	examId: number;
+	test: any = "";
+	
+	constructor(private http: Http) { }
+
 
 	saveAnswer(answer:UserAnswer) {
-		debugger
+		// debugger
 		return this.http.post('http://localhost:8080/user/answer', answer);
 	}
 
 	getExams() {
-		debugger
+		// debugger
 		return this.http.get('http://localhost:8080/admin/exam/all');
 	}
 
@@ -51,7 +54,7 @@ export class UserService {
 			.then(response => response.json())
 			.catch(this.handleError);
 		console.log("exam: " + exam);
-		debugger
+		// debugger
 		return exam;
 	}
 
