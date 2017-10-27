@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { UserService } from './user.service';
 import { Routes, RouterModule } from '@angular/router';
 import { ExampageComponent } from './exampage/exampage.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,7 +27,9 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ExampageComponent    
+    ExampageComponent,
+    SignupComponent,
+    SigninComponent    
   ],
   imports: [
     RouterModule.forRoot(
