@@ -1,9 +1,8 @@
-package com.dot.examinator.controller;
+package com.dot.examinator.rest;
 
 import com.dot.examinator.domain.Exam;
 import com.dot.examinator.service.ExamService;
 import com.dot.examinator.service.FileConsumer;
-import com.dot.examinator.service.FileConsumerFactory;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

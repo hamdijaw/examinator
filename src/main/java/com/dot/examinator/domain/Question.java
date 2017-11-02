@@ -24,7 +24,7 @@ public class Question {
 
     public Question(String body, Exam exam) {
         this.body = body;
-        this.exam = exam;
+//        this.exam = exam;
     }
 
 /*    public Question(String body, Set<Answer> answers) {
@@ -39,10 +39,10 @@ public class Question {
 //    @Column(name = "name")
     private String body;
 //    @JsonManagedReference
-    @JsonBackReference
+    /*@JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "exam_id")
-    private Exam exam;
+    private Exam exam;*/
     @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", fetch = FetchType.LAZY)
     private Set<Answer> answers;
@@ -109,11 +109,11 @@ public class Question {
         this.createdDate = createdDate;
     }
 
-    public Exam getExam() {
-        return exam;
-    }
+//    public Exam getExam() {
+//        return exam;
+//    }
 
-    public void setExam(Exam exam) {
-        this.exam = exam;
-    }
+//    public void setExam(Exam exam) {
+//        this.exam = exam;
+//    }
 }

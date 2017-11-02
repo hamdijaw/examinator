@@ -1,0 +1,35 @@
+.spaceHeight {
+    /* background-color: #a1a1a1; */
+    height: 1vh;
+}
+.spaceHeight10 {
+    /* background-color: #a1a1a1; */
+    height: 10vh;
+}
+.customWidth {
+    width: 30vh;
+}
+.customWidth30 {
+    width: 30vh;
+}
+
+.floatLeft {
+    float:left;
+    width:100px;
+}
+.floatRight {
+    float: right;
+    width: 100px;
+}
+.con {
+    background-color: #a1a1a1;
+    height: 20vh;
+}
+.orange {
+    background-color: orange;
+    height: 20px;
+}
+.red {
+    background-color: red;
+    height: 20px;
+}

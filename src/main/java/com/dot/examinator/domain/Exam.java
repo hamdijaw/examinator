@@ -18,7 +18,7 @@ import java.util.Set;
 public class Exam {
 
     public Exam() {
-        this.questions = new HashSet<>();
+//        this.questions = new HashSet<>();
     }
 
     public Exam(String name) {
@@ -37,10 +37,10 @@ public class Exam {
 //    @OneToMany(cascade = CascadeType.ALL)
 //    @JsonBackReference
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "exam", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    @JoinTable(name = "question", joinColumns = @JoinColumn(name = "exam_id"), inverseJoinColumns = @JoinColumn(name = "exam_ID"))
-//    @JoinColumn(name = "exam_id")
-    private Set<Question> questions;
+    @JoinColumn(name = "exam_id")
+    private Set<Question> questions = new HashSet<>();;
 
     public long getId() {
         return id;
@@ -72,8 +72,27 @@ public class Exam {
     public Set<Question> getQuestions() {
         return questions;
     }
+
+    public void addQuestion(Question question) {
+        questions.add(question);
+    }
 //
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Exam exam = (Exam) o;
+
+        return id == exam.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
     }
 }

@@ -12,4 +12,13 @@ CREATE TABLE `user_entitlement` (
   `entryDate` date DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
-insert into user_entitlement (`user_id`, `password`) values (18, '111')
+insert into user_entitlement (`user_id`, `password`) values (18, '111');
+
+-- add foreign key
+ALTER TABLE `examinatordb`.`user_entitlement`
+ADD CONSTRAINT `user_id`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `examinatordb`.`user_data` (`user_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+

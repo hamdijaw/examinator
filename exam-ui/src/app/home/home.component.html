@@ -1,15 +1,15 @@
-<p>
- User Home Page!
-</p>
-<label>User</label>
-<label>ABC</label>
-<!-- <button (click)="startExam()">English</button> -->
-<!-- <button [disabled]="loading" class="btn btn-primary" (click)="onClickMe()">Login</button> -->
-<!-- {{userdata|json}}     -->
-
-<p>Exams:</p>
-<ul (click)="selectExam()">
-  <li *ngFor="let exam of dataList" (click)="selectExam(exam)" >
-        <a href="#" [routerLink]="['exampage']">{{ exam.id }} - {{ exam.name }}</a>    
-  </li>
-</ul>
+<!-- <app-app-header title=''></app-app-header> -->
+<div class="text-center" align="center">
+  <p>
+    Welcome to Misbah Classes
+    </p>
+    <label>Misbah</label>
+  <p>Exams:</p>
+  <div>
+  <ul (click)="selectExam()" class="list-unstyled">
+    <li *ngFor="let exam of dataList" (click)="selectExam(exam)" >
+          <a href="#" [routerLink]="['exampage']">{{ exam.id }} - {{ exam.name }}</a>    
+    </li>
+  </ul>
+</div>
+</div>

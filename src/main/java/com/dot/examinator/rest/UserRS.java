@@ -1,4 +1,4 @@
-package com.dot.examinator.controller;
+package com.dot.examinator.rest;
 
 import com.dot.examinator.domain.Exam;
 import com.dot.examinator.domain.Question;

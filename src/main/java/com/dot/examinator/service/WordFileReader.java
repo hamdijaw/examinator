@@ -69,8 +69,8 @@ public class WordFileReader implements ExamFileReader {
                     List<XWPFRun> runs = para.getRuns();
                     if (StringUtils.containsAny("1", para.getNumLevelText())) {
                         question = new Question(para.getText());
-                        question.setExam(exam); //this may be unnecessary as exam has ref to questions
-                        exam.getQuestions().add(question);
+//                        question.setExam(exam); //this may be unnecessary as exam has ref to questions
+                        exam.addQuestion(question);
                         continue;
                     }
                     if (StringUtils.containsAny("2", para.getNumLevelText())) {
@@ -192,8 +192,8 @@ public class WordFileReader implements ExamFileReader {
                         List<XWPFRun> runs = para.getRuns();
                         if (StringUtils.containsAny("1", para.getNumLevelText())) {
                             question = new Question(para.getText());
-                            question.setExam(exam); //this may be unnecessary as exam has ref to questions
-                            exam.getQuestions().add(question);
+//                            question.setExam(exam); //this may be unnecessary as exam has ref to questions
+                            exam.addQuestion(question);
                             continue;
                         }
                         if (StringUtils.containsAny("2", para.getNumLevelText())) {

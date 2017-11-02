@@ -11,6 +11,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ExampageComponent } from './exampage/exampage.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { AppHeaderComponent } from './app-header/app-header.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const appRoutes: Routes = [
       {path: 'exampage', component: ExampageComponent}
     ] },
   { path: 'login', component: LoginComponent },
-  { path: 'exampage', component: ExampageComponent }
+  { path: 'exampage', component: ExampageComponent },
+  { path: 'signup', component: SignupComponent }
 ]
 
 @NgModule({
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     HomeComponent,
     ExampageComponent,
     SignupComponent,
-    SigninComponent    
+    SigninComponent,
+    AppHeaderComponent
   ],
   imports: [
     RouterModule.forRoot(

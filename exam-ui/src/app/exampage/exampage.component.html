@@ -1,15 +1,70 @@
-<div *ngIf="questions.length">
-
-  <label>Question {{currentIndex + 1}} )</label>
-  <table>
-    <tbody>
-      <tr>
-        {{questions[currentIndex].body}}
-      </tr>
-    </tbody>
-  </table>
-  <textarea [(ngModel)]="answerText"></textarea>
-  {{currentIndex}}{{questions.length}}
-  <button (click)='previousQuestion()' [disabled]='prevFlag'>previous</button>
-  <button (click)='nextQuestion()' [disabled] ='nextFlag'>next</button>
+<!-- <div class="container con">
+  <div class="row">
+    <div class="col-sm-6 orange">col-1</div>
+    <div class="col red">col-2</div>
+    <div class="col orange">col-3</div>
+  </div>
+  <div class="row">1</div>
+  <div class="row justify-content-md-center">
+    <div class="col-sm orange">col-10</div>
+    <div class="col-sm col-md-auto red">col-2 make this col bigger</div>
+    <div class="col-sm orange">col-3</div>
+  </div>
+  <div class="row">2</div>
+  <div class="row ">
+    <div class="col-sm orange">col-10</div>
+    <div class="col-sm red">col-2 make this col bigger</div>
+    <div class="w-100"></div>
+    <div class="col-sm orange">col-3</div>
+    <div class="col-sm grey">col-3</div>
+  </div>
+</div> -->
+<div class="container">
+    <div class="row">
+      <div class="col-md-2">
+          Question {{currentIndex + 1}}) 
+      </div>
+      <div class="colmd-8">{{questions[currentIndex].body}}</div>
+      <!-- <div class="col orange">new-col-3</div> -->
+    </div>
+    <div class="row spaceHeight"></div>
+    <div class="row spaceHeight10">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <textarea [(ngModel)]="answerText"></textarea>
+        </div>
+    </div>
+    <div class="row spaceHeight"></div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <button (click)='previousQuestion()' [disabled]='prevFlag' style="width:100px">previous</button>
+            <button (click)='nextQuestion()' [disabled] ='nextFlag' style="width:100px">next</button>
+        </div>
+        <div class="col-md customWidth30"></div>
+        <div class="col-md-3">
+          <button (click)='previousQuestion()' [disabled]='prevFlag' style="width:100px">submit</button>
+        </div>
+    </div>
+    
 </div>
+<!-- <div class="container-fluid" *ngIf="questions.length">
+    <table class="table table-bordered table-striped text-center">
+        <tr>
+      <td>
+  <label>Question {{currentIndex + 1}} )   </label>
+
+    
+
+        {{questions[currentIndex].body}}
+      </td>
+      </tr>
+    
+ <tr>
+  <textarea [(ngModel)]="answerText"></textarea>
+</tr>
+</table>
+  
+  <button (click)='previousQuestion()' [disabled]='prevFlag' style="width:100px">previous</button>
+  <button (click)='nextQuestion()' [disabled] ='nextFlag' style="width:100px">next</button>
+</div> -->
