@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { UserAnswer } from './UserAnswer';
 
@@ -17,6 +17,19 @@ export class UserService {
 	saveAnswer(answer:UserAnswer) {
 		// debugger
 		return this.http.post('http://localhost:8080/user/answer', answer);
+	}
+
+	getExamsForUser(userId, password) {
+		debugger
+		let data = {
+			'userId': userId,
+			'password': password
+		}
+		var dataJson = JSON.stringify(data);
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		debugger
+		return this.http.post('http://localhost:8080/login/18', dataJson, {headers: headers});
 	}
 
 	getExams() {

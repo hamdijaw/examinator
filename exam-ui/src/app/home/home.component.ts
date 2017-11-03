@@ -13,11 +13,17 @@ export class HomeComponent implements OnInit {
   dataList:any[];
   questions:any[];
   ngOnInit() {
-    this.userService.getExams().subscribe(data => {
-  this.dataList = data.json();
-  }, err => {
-      console.log("Error Occured")
-    });
+  //   this.userService.getExams().subscribe(data => {
+  // this.dataList = data.json();
+  // }, err => {
+  //     console.log("Error Occured")
+  //   });
+    debugger
+  this.userService.getExamsForUser("18", "111").subscribe(data => {
+    this.dataList = data.json().exams;
+    }, err => {
+        console.log("Error Occured")
+      });
   }
 
   selectExam(exam) {
