@@ -34,8 +34,18 @@ CREATE TABLE `answer` (
   `question_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`answer_id`),
   KEY `questionId` (`questionId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `answer`
+--
+
+LOCK TABLES `answer` WRITE;
+/*!40000 ALTER TABLE `answer` DISABLE KEYS */;
+INSERT INTO `answer` VALUES (1,'3',0,NULL,'9999-12-31','system',NULL,NULL,1),(2,'4',1,NULL,'9999-12-31','system',NULL,NULL,1),(3,'5',0,NULL,'9999-12-31','system',NULL,NULL,1),(4,'6',0,NULL,'9999-12-31','system',NULL,NULL,1),(5,'2',1,NULL,'9999-12-31','system',NULL,NULL,2),(6,'3',0,NULL,'9999-12-31','system',NULL,NULL,2),(7,'4',0,NULL,'9999-12-31','system',NULL,NULL,2),(8,'5',0,NULL,'9999-12-31','system',NULL,NULL,2),(9,'2',0,NULL,'9999-12-31','system',NULL,NULL,3),(10,'4',1,NULL,'9999-12-31','system',NULL,NULL,3),(11,'6',0,NULL,'9999-12-31','system',NULL,NULL,3),(12,'7',0,NULL,'9999-12-31','system',NULL,NULL,3),(13,'28',1,NULL,'9999-12-31','system',NULL,NULL,4),(14,'29',0,NULL,'9999-12-31','system',NULL,NULL,4),(15,'19',0,NULL,'9999-12-31','system',NULL,NULL,4),(16,'30',0,NULL,'9999-12-31','system',NULL,NULL,4),(17,'Continued Hard Work',0,NULL,'9999-12-31','system',NULL,NULL,12),(18,'Bad',0,NULL,'9999-12-31','system',NULL,NULL,13),(19,'4',1,NULL,'9999-12-31','system',NULL,NULL,14),(20,'5',0,NULL,'9999-12-31','system',NULL,NULL,14),(21,'6',0,NULL,'9999-12-31','system',NULL,NULL,14),(22,'7',0,NULL,'9999-12-31','system',NULL,NULL,14),(23,'11',0,NULL,'9999-12-31','system',NULL,NULL,15),(24,'12',0,NULL,'9999-12-31','system',NULL,NULL,15),(25,'13',0,NULL,'9999-12-31','system',NULL,NULL,15),(26,'10',1,NULL,'9999-12-31','system',NULL,NULL,15),(27,'4',1,NULL,'9999-12-31','system',NULL,NULL,16),(28,'5',0,NULL,'9999-12-31','system',NULL,NULL,16),(29,'6',0,NULL,'9999-12-31','system',NULL,NULL,16),(30,'7',0,NULL,'9999-12-31','system',NULL,NULL,16),(31,'11',0,NULL,'9999-12-31','system',NULL,NULL,17),(32,'12',0,NULL,'9999-12-31','system',NULL,NULL,17),(33,'13',0,NULL,'9999-12-31','system',NULL,NULL,17),(34,'10',1,NULL,'9999-12-31','system',NULL,NULL,17);
+/*!40000 ALTER TABLE `answer` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -46,4 +56,4 @@ CREATE TABLE `answer` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-19  9:04:24
+-- Dump completed on 2017-11-06 11:19:59

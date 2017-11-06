@@ -16,31 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `exam`
+-- Table structure for table `user_exam`
 --
 
-DROP TABLE IF EXISTS `exam`;
+DROP TABLE IF EXISTS `user_exam`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `exam` (
-  `exam_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `createdDate` date DEFAULT NULL,
-  `deletedDate` date DEFAULT '9999-12-31',
-  `createdBy` varchar(255) NOT NULL DEFAULT 'system',
-  `created_date` date DEFAULT NULL,
-  PRIMARY KEY (`exam_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+CREATE TABLE `user_exam` (
+  `user_id` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  `completed` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`user_id`,`exam_id`),
+  KEY `user_id_idx` (`user_id`),
+  KEY `exam_id_idx` (`exam_id`),
+  CONSTRAINT `exam_id` FOREIGN KEY (`exam_id`) REFERENCES `exam` (`exam_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `user_data_id` FOREIGN KEY (`user_id`) REFERENCES `user_data` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `exam`
+-- Dumping data for table `user_exam`
 --
 
-LOCK TABLES `exam` WRITE;
-/*!40000 ALTER TABLE `exam` DISABLE KEYS */;
-INSERT INTO `exam` VALUES (1,'Maths – Standard - 2',NULL,'9999-12-31','system',NULL),(2,'Science-9',NULL,'9999-12-31','system',NULL),(3,'Science-1-',NULL,'9999-12-31','system',NULL),(4,'English-10',NULL,'9999-12-31','system',NULL),(5,'English-11',NULL,'9999-12-31','system',NULL),(6,'Test-N',NULL,'9999-12-31','system',NULL),(7,'Test-N',NULL,'9999-12-31','system',NULL);
-/*!40000 ALTER TABLE `exam` ENABLE KEYS */;
+LOCK TABLES `user_exam` WRITE;
+/*!40000 ALTER TABLE `user_exam` DISABLE KEYS */;
+INSERT INTO `user_exam` VALUES (18,1,0),(18,2,0);
+/*!40000 ALTER TABLE `user_exam` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-06 11:19:59
+-- Dump completed on 2017-11-06 11:19:58
