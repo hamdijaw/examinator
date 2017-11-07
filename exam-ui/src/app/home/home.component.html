@@ -1,10 +1,11 @@
+<app-app-header></app-app-header>
 <!-- <app-app-header title=''></app-app-header> -->
 <div class="text-center" align="center">
-  <p>
+  <!-- <p>
     Welcome to Misbah Classes
     </p>
-    <label>Misbah</label>
-  <p>Exams:</p>
+    <label>Misbah</label> -->
+  <p><strong>Exams:</strong></p>
   <div>
   <ul (click)="selectExam()" class="list-unstyled">
     <li *ngFor="let exam of dataList" (click)="selectExam(exam)" >

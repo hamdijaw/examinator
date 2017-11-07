@@ -34,6 +34,14 @@ CREATE TABLE `user_exam` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+ALTER TABLE `examinatordb`.`user_exam`
+ADD COLUMN `exam_date` DATETIME NULL AFTER `completed`,
+ADD COLUMN `marks` VARCHAR(45) NULL AFTER `exam_date`;
+
+ALTER TABLE `examinatordb`.`user_exam`
+ADD COLUMN `attempt` INT NULL DEFAULT 0 AFTER `marks`;
+
 --
 -- Dumping data for table `user_exam`
 --

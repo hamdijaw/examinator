@@ -26,11 +26,11 @@
         <label>
             <b>Username</b>
         </label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Username" name="uname" required [(ngModel)]="userName">
         <label>
             <b>Password</b>
         </label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="psw" required [(ngModel)]="password">
         <button type="submit" (click)="onClickMe()">Login</button>
         <input type="checkbox" checked="checked"> Remember me
         <div style="background-color:#f1f1f1">

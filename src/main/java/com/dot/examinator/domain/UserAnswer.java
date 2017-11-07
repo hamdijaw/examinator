@@ -2,6 +2,7 @@ package com.dot.examinator.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user_answer")
@@ -20,6 +21,9 @@ public class UserAnswer implements Serializable {
     @Id
     @Column(name = "question_id")
     private long questionId;
+
+    @Column(name = "entryDate")
+    private LocalDateTime entryDate;
 
     @Column(name = "answer")
     private String answerEntered;
@@ -56,6 +60,14 @@ public class UserAnswer implements Serializable {
         this.answerEntered = answerEntered;
     }
 
+    public LocalDateTime getEntryDate() {
+        return entryDate;
+    }
+
+    public void setEntryDate(LocalDateTime entryDate) {
+        this.entryDate = entryDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,8 +77,7 @@ public class UserAnswer implements Serializable {
 
         if (userId != that.userId) return false;
         if (examId != that.examId) return false;
-        if (questionId != that.questionId) return false;
-        return answerEntered != null ? answerEntered.equals(that.answerEntered) : that.answerEntered == null;
+        return questionId == that.questionId;
     }
 
     @Override
@@ -74,7 +85,6 @@ public class UserAnswer implements Serializable {
         int result = (int) (userId ^ (userId >>> 32));
         result = 31 * result + (int) (examId ^ (examId >>> 32));
         result = 31 * result + (int) (questionId ^ (questionId >>> 32));
-        result = 31 * result + (answerEntered != null ? answerEntered.hashCode() : 0);
         return result;
     }
 }

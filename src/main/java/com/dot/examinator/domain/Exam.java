@@ -40,7 +40,7 @@ public class Exam {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    @JoinTable(name = "question", joinColumns = @JoinColumn(name = "exam_id"), inverseJoinColumns = @JoinColumn(name = "exam_ID"))
     @JoinColumn(name = "exam_id")
-    private Set<Question> questions = new HashSet<>();;
+    private Set<Question> questions = new HashSet<>();
 
     public long getId() {
         return id;

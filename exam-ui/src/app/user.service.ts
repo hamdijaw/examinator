@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { UserAnswer } from './UserAnswer';
+import { UserAnswer } from './domain/UserAnswer';
+import {environment} from 'environments/environment';
+import { UserData } from './domain/UserData';
 
 // http://localhost:8080/examhttp://localhost:8080/user/authenticate
 @Injectable()
@@ -10,26 +12,34 @@ export class UserService {
 	questions:any[];
 	examId: number;
 	test: any = "";
+	userIdEntry: string;
+	passwordEntry: string;
+	userData: UserData;
+	dataList:any[];
 	
 	constructor(private http: Http) { }
 
 
 	saveAnswer(answer:UserAnswer) {
 		// debugger
-		return this.http.post('http://localhost:8080/user/answer', answer);
+		let urlString = environment.url + environment.saveAnswer;
+		// return this.http.post('http://localhost:8080/user/answer', answer);
+		return this.http.post(urlString, answer);
 	}
 
-	getExamsForUser(userId, password) {
+	getExamsForUser(userIdEntryByUser, passwordEntryByUser) {
 		debugger
 		let data = {
-			'userId': userId,
-			'password': password
+			'userId': userIdEntryByUser,
+			'password': passwordEntryByUser
 		}
 		var dataJson = JSON.stringify(data);
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json');
+		let urlString = environment.url + environment.login + '/' + userIdEntryByUser;
 		debugger
-		return this.http.post('http://localhost:8080/login/18', dataJson, {headers: headers});
+		// return this.http.post('http://localhost:8080/login/18', dataJson, {headers: headers});
+		return this.http.post(urlString, dataJson, {headers: headers});
 	}
 
 	getExams() {
@@ -48,27 +58,29 @@ export class UserService {
 		// 	console.log("dataa"+dataList);
 		return dataList;
 	}
-	authenticateUser() {
 
+	authenticateUser(userIdEntry, passwordEntry) {
+		this.userIdEntry = userIdEntry;
+		this.passwordEntry = passwordEntry;
 		//alert("user service");
-		var myStr = this.http.get("http://localhost:8080/user/authenticate")
-			.toPromise()
-			.then(response => {
-				console.log("check: " + response.text());
-				this.test = response.text();
-			})
-			.catch(this.handleError);
-		console.log("aaaaaa");
-		console.log("myStr: " + this.test);
-		console.log("bbbbb");
+		// var myStr = this.http.get("http://localhost:8080/user/authenticate")
+		// 	.toPromise()
+		// 	.then(response => {
+		// 		console.log("check: " + response.text());
+		// 		this.test = response.text();
+		// 	})
+		// 	.catch(this.handleError);
+		// console.log("aaaaaa");
+		// console.log("myStr: " + this.test);
+		// console.log("bbbbb");
 
-		var exam = this.http.get("http://localhost:8080/exam")
-			.toPromise()
-			.then(response => response.json())
-			.catch(this.handleError);
-		console.log("exam: " + exam);
+		// var exam = this.http.get("http://localhost:8080/exam")
+		// 	.toPromise()
+		// 	.then(response => response.json())
+		// 	.catch(this.handleError);
+		// console.log("exam: " + exam);
 		// debugger
-		return exam;
+		// return exam;
 	}
 
 	private handleError(error: any): Promise<any> {

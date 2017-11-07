@@ -1,7 +1,9 @@
 <div class="header">
   <div class="row">
-    <div class="col-md floatLeft"> <h1>Welcome to Misbah Classes</h1></div>
+    <div class="col-md floatLeft"> <h3>Welcome to Misbah Classes</h3></div>
     <!-- <div class="col-md customWidth30"></div> -->
-    <div class="col-md floatRight" style="text-align: -webkit-right;margin-right: 30px;top: 10px;">User</div>
+    <div class="col-md floatRight" style="text-align: -webkit-right;margin-right: 30px;top: 10px;"> User-{{username}}</div>
+    <div class="col-md floatRight" style="text-align: -webkit-right;margin-right: 30px;top: 10px;">
+        <button (click)='logoutUser()' style="width:100px">Logout</button>
   </div>   
  </div>

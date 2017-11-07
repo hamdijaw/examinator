@@ -14,7 +14,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, 
     children: [
       {path: 'exampage', component: ExampageComponent}

@@ -50,4 +50,11 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+
+ALTER TABLE `examinatordb`.`user_answer`
+CHANGE COLUMN `entryDate` `entryDate` DATETIME NULL DEFAULT NULL ;
+ALTER TABLE `examinatordb`.`user_answer`
+CHANGE COLUMN `entryDate` `entry_date` DATETIME NULL DEFAULT NULL ;
+
+
 -- Dump completed on 2017-11-06 11:19:59

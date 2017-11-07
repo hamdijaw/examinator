@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Transactional
@@ -18,8 +19,11 @@ public class UserAnswerDaoJpa {
 
     public void saveAnswer(UserAnswer userAnswer) {
         System.out.println("*********JPA called");
-        entityManager.persist(userAnswer);
-        System.out.println("******Exam saved successfully******");
+//        entityManager.persist(userAnswer);
+        userAnswer.setEntryDate(LocalDateTime.now());
+        entityManager.merge(userAnswer);
+
+        System.out.println("******Answer saved successfully******");
     }
 
     public List<Exam> getAllArticles() {

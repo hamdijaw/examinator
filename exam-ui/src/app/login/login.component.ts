@@ -14,18 +14,37 @@ export class LoginComponent implements OnInit {
     this.user_service = userService;
   }
 
-
-
   // constructor() { }
 
   ngOnInit() {
+    localStorage.removeItem("username");
   }
   userdata: any = [];
+  userName: string;
+  password: string;
+
   onClickMe() {
     console.log("inside onClickeMe method")
+    
     //alert("hello");
-    this.userdata = this.user_service.authenticateUser();
+    // this.userdata = this.user_service.authenticateUser(this.userName, this.password);
+    debugger
     // this.router.navigate(['/home'], { queryParams: {}});
-    this.router.navigate(['/home']);
+    this.userService
+    // .getExamsForUser(this.userService.userIdEntry, this.userService.passwordEntry)
+        .getExamsForUser(this.userName, this.password)
+        .subscribe(data => {
+          this.userService.userData = data.json();
+          // this.dataList = data.json().exams;
+          this.userService.dataList = this.userService.userData.exams;
+          this.router.navigate(['/home']);
+          debugger
+          localStorage.setItem("username", this.userService.userData.name);
+          debugger
+      }, err => {
+          console.log("Error Occured")
+        });
+    
+    
   }
 }

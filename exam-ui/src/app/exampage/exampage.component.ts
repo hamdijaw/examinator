@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { UserAnswer } from '../UserAnswer';
+import { UserAnswer } from '../domain/UserAnswer';
 
 @Component({
   selector: 'app-exampage',
@@ -38,6 +38,9 @@ export class ExampageComponent implements OnInit {
     // debugger
   }
  
+  submitExam() {
+
+  }
 
   nextQuestion() {
     if(this.questions.length-1 == this.currentIndex) {
