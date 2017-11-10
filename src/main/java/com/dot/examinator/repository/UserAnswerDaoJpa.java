@@ -32,12 +32,12 @@ public class UserAnswerDaoJpa {
         return (List<Exam>) entityManager.createQuery(hql).getResultList();
     }
 
-    public List getAnswersOfUserExam(long userId, long examId) {
+    public List<UserAnswer> getAnswersOfUserExam(long userId, long examId) {
         System.out.println("*********JPA called");
-        String hql = "FROM UserAnswer as ua where ua.userId=:userId";
+        String hql = "FROM UserAnswer as ua where ua.userAnswerPK.userId=:userId";
         Query query = entityManager.createQuery(hql);
         query.setParameter("userId", userId);
-        final List resultList = query.getResultList();
+        final List<UserAnswer> resultList = query.getResultList();
         return resultList;
 //        return entityManager.find(Exam.class, articleId);
     }
