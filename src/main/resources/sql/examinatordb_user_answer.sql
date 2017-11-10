@@ -35,6 +35,19 @@ CREATE TABLE `user_answer` (
 -- Dumping data for table `user_answer`
 --
 
+-- 10-Nov-2017
+CREATE TABLE `examinatordb`.`user_answer` (
+  `user_id` INT NOT NULL,
+  `exam_id` INT NOT NULL,
+  `attempt` INT NOT NULL,
+  `question_id` INT NOT NULL,
+  `answer` VARCHAR(255) NULL,
+  PRIMARY KEY (`user_id`, `exam_id`, `attempt`, `question_id`));
+
+  ALTER TABLE `examinatordb`.`user_answer`
+  ADD COLUMN `entryDateTime` DATETIME NULL AFTER `answer`;
+
+-------------------------------------------------------
 LOCK TABLES `user_answer` WRITE;
 /*!40000 ALTER TABLE `user_answer` DISABLE KEYS */;
 INSERT INTO `user_answer` VALUES (18,1,1,'Answer-1',NULL),(18,1,2,'Answer-2',NULL),(12,12,1,'1111111',NULL),(12,12,1,'1111111',NULL),(18,1,4,'28',NULL),(18,1,4,'1',NULL),(18,1,4,'4',NULL),(18,1,4,'5',NULL),(18,1,4,'28',NULL),(18,1,4,'1',NULL),(18,1,4,'5',NULL),(18,1,4,'4',NULL),(18,1,4,'78',NULL),(18,1,4,'4',NULL),(18,1,4,'two',NULL),(18,1,4,'5',NULL),(18,1,1,'five',NULL),(18,1,4,'twenty eight',NULL),(18,1,2,'two',NULL),(18,1,1,'five',NULL),(18,1,4,'2-8',NULL),(18,1,2,'2222',NULL),(18,1,2,'2222',NULL),(18,1,2,'2222',NULL),(18,1,1,'555',NULL),(18,1,2,'2222',NULL),(18,1,2,'2222',NULL),(18,1,2,'2222',NULL),(18,1,1,'5555',NULL),(18,1,3,'4',NULL),(18,1,2,'2222',NULL),(18,1,2,'2222',NULL),(18,1,2,'2',NULL),(18,1,1,'1',NULL),(18,1,1,'112',NULL),(18,1,4,'111',NULL),(18,1,2,'2222',NULL),(18,1,3,'5555',NULL),(18,1,2,'2222',NULL),(18,1,4,'111',NULL),(18,1,2,'2222',NULL),(18,1,3,'5555',NULL),(18,1,2,'2222',NULL),(18,1,4,'111',NULL),(18,1,2,'2222',NULL),(18,1,3,'5555',NULL),(18,1,3,'5555',NULL),(18,1,2,'2222',NULL),(18,1,4,'111',NULL),(18,1,2,'2222',NULL),(18,1,3,'5555',NULL),(18,1,3,'5555',NULL),(18,1,2,'2222',NULL),(18,1,4,'111',NULL),(18,1,2,'2222',NULL),(18,1,3,'5555',NULL),(18,1,3,'5555',NULL),(18,1,2,'2222',NULL),(18,1,4,'111',NULL),(18,1,2,'2222',NULL),(18,1,3,'5555',NULL),(18,1,3,'5555',NULL),(18,1,2,'2222',NULL),(18,1,4,'111',NULL),(18,1,2,'2222',NULL),(18,1,3,'5555',NULL),(18,1,4,'28',NULL),(18,1,3,'444',NULL),(18,1,2,'11',NULL),(18,1,3,'',NULL);

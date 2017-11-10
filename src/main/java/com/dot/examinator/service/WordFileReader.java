@@ -84,7 +84,7 @@ public class WordFileReader implements ExamFileReader {
                         }
                         answer.setCorrect(isCorrect);
                         answer.setQuestion(question);
-                        question.getAnswers().add(answer);
+                        question.addAnswer(answer);
                 }
             }
 

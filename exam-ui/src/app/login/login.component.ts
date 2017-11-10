@@ -20,15 +20,15 @@ export class LoginComponent implements OnInit {
     localStorage.removeItem("username");
   }
   userdata: any = [];
-  userName: string;
-  password: string;
+  userName: string='18';
+  password: string='111';
 
   onClickMe() {
     console.log("inside onClickeMe method")
     
     //alert("hello");
     // this.userdata = this.user_service.authenticateUser(this.userName, this.password);
-    debugger
+  
     // this.router.navigate(['/home'], { queryParams: {}});
     this.userService
     // .getExamsForUser(this.userService.userIdEntry, this.userService.passwordEntry)
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           // this.dataList = data.json().exams;
           this.userService.dataList = this.userService.userData.exams;
           this.router.navigate(['/home']);
-          debugger
+         
           localStorage.setItem("username", this.userService.userData.name);
           debugger
       }, err => {

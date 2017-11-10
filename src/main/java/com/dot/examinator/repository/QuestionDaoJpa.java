@@ -19,12 +19,12 @@ public class QuestionDaoJpa {
         System.out.println("*********JPA called");
         return entityManager.find(Question.class, questionId);
     }
-    @SuppressWarnings("unchecked")
-    public List<Question> getAllQuestionsByExam(long examId) {
-        System.out.println("*********JPA called");
-        String hql = "FROM Question as atcl ORDER BY atcl.exam_id";
-//        final List resultList = entityManager.createQuery(hql).getResultList();
-        final List resultList = entityManager.createQuery("Select body from Question q where q.exam =" + examId).getResultList();
-        return resultList;
-    }
+
+//    public List<Question> getAllQuestionsByExam(long examId) {
+//        System.out.println("*********JPA called");
+//        String hql = "FROM Question as atcl ORDER BY atcl.exam_id";
+////        final List resultList = entityManager.createQuery(hql).getResultList();
+//        final List resultList = entityManager.createQuery("Select body from Question q where q.examId =" + examId).getResultList();
+//        return resultList;
+//    }
 }

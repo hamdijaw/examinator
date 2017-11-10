@@ -42,6 +42,12 @@ ADD COLUMN `marks` VARCHAR(45) NULL AFTER `exam_date`;
 ALTER TABLE `examinatordb`.`user_exam`
 ADD COLUMN `attempt` INT NULL DEFAULT 0 AFTER `marks`;
 
+ALTER TABLE `examinatordb`.`user_exam`
+CHANGE COLUMN `attempt` `attempt` INT(11) NOT NULL DEFAULT '0' ,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`user_id`, `exam_id`, `attempt`);
+
+
 --
 -- Dumping data for table `user_exam`
 --

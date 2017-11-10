@@ -37,12 +37,12 @@ public class UserRS {
         return exam;
     }
 
-    @GetMapping("/{examId}/questions")
-    public List getAllQuestionsByExam(@PathVariable long examId) {
-        System.out.println("********EXAM***********");
-        final List<Question> allQuestionsByExam = questionDaoJpa.getAllQuestionsByExam(examId);
-        return allQuestionsByExam;
-    }
+//    @GetMapping("/{examId}/questions")
+//    public List getAllQuestionsByExam(@PathVariable long examId) {
+//        System.out.println("********EXAM***********");
+////        final List<Question> allQuestionsByExam = questionDaoJpa.getAllQuestionsByExam(examId);
+////        return allQuestionsByExam;
+//    }
 
     @PostMapping("/answer")
     public boolean saveAnswer(@RequestBody UserAnswer userAnswer) {

@@ -15,9 +15,9 @@ import { AppHeaderComponent } from './app-header/app-header.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, 
+  { path: 'home', component: HomeComponent,
     children: [
-      {path: 'exampage', component: ExampageComponent}
+      { path: 'exampage', component: ExampageComponent }
     ] },
   { path: 'login', component: LoginComponent },
   { path: 'exampage', component: ExampageComponent },

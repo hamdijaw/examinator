@@ -39,7 +39,7 @@ export class ExampageComponent implements OnInit {
   }
  
   submitExam() {
-
+    
   }
 
   nextQuestion() {

@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Set;
@@ -33,9 +34,9 @@ public class LoginServiceImplTest {
         exams.forEach(exam -> {
             // Hibernate.initialize() didn't work to resolve LazyInitializationException
 //            Hibernate.initialize(exam.getQuestions());
-            System.out.println("question size: " + exam.getQuestions().size());
+//            System.out.println("question size: " + exam.getQuestions().size());
         });
-        System.out.println("size: " + size);
+//        System.out.println("size: " + size);
         System.out.println("2222");
     }
 

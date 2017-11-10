@@ -1,7 +1,9 @@
 package com.dot.examinator.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +23,9 @@ public class User {
     @JoinTable(name = "user_exam", joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "exam_id")})
     private Set<Exam> exams = new HashSet<>();
+
+    @Transient
+    private List<UserExam> userExams = new ArrayList<>();
 
     public long getUserId() {
         return userId;
@@ -44,6 +49,14 @@ public class User {
 
     public void setExams(Set<Exam> exams) {
         this.exams = exams;
+    }
+
+    public List<UserExam> getUserExams() {
+        return userExams;
+    }
+
+    public void setUserExams(List<UserExam> userExams) {
+        this.userExams = userExams;
     }
 
     @Override

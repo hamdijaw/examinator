@@ -7,15 +7,43 @@ import java.io.Serializable;
 
 @Embeddable
 public class UserAnswerPK implements Serializable {
-    /*@Id
-    @Column(name = "user_id")*/
+    @Column(name = "user_id")
     private long userId;
-    /*@Id
-    @Column(name = "exam_id")*/
+
+    @Column(name = "exam_id")
     private long examId;
-    /*@Id
-    @Column(name = "question_id")*/
+
+    @Column(name = "question_id")
     private long questionId;
+
+    @Column(name = "attempt")
+    private int attempt;
+
+    public UserAnswerPK() {
+    }
+
+    public UserAnswerPK(long userId, long examId, long questionId, int attempt) {
+        this.userId = userId;
+        this.examId = examId;
+        this.questionId = questionId;
+        this.attempt = attempt;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public long getExamId() {
+        return examId;
+    }
+
+    public long getQuestionId() {
+        return questionId;
+    }
+
+    public int getAttempt() {
+        return attempt;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -26,7 +54,8 @@ public class UserAnswerPK implements Serializable {
 
         if (userId != that.userId) return false;
         if (examId != that.examId) return false;
-        return questionId == that.questionId;
+        if (questionId != that.questionId) return false;
+        return attempt == that.attempt;
     }
 
     @Override
@@ -34,30 +63,9 @@ public class UserAnswerPK implements Serializable {
         int result = (int) (userId ^ (userId >>> 32));
         result = 31 * result + (int) (examId ^ (examId >>> 32));
         result = 31 * result + (int) (questionId ^ (questionId >>> 32));
+        result = 31 * result + attempt;
         return result;
     }
 
-    public long getUserId() {
-        return userId;
-    }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public long getExamId() {
-        return examId;
-    }
-
-    public void setExamId(long examId) {
-        this.examId = examId;
-    }
-
-    public long getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(long questionId) {
-        this.questionId = questionId;
-    }
 }

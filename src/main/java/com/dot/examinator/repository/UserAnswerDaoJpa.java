@@ -22,6 +22,7 @@ public class UserAnswerDaoJpa {
 //        entityManager.persist(userAnswer);
         userAnswer.setEntryDate(LocalDateTime.now());
         entityManager.merge(userAnswer);
+//        entityManager.persist(userAnswer);
 
         System.out.println("******Answer saved successfully******");
     }

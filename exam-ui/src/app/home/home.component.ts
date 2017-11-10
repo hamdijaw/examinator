@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { UserData } from '../domain/UserData';
+import { UserExam } from '../domain/UserExam';
 
 @Component({
   selector: 'app-home',
@@ -14,28 +15,14 @@ export class HomeComponent implements OnInit {
   dataList:any[];
   questions:any[];
   userData: UserData;
+  userExams: UserExam[];
 
   ngOnInit() {
-    
-  //   this.userService.getExams().subscribe(data => {
-  // this.dataList = data.json();
-  // }, err => {
-  //     console.log("Error Occured")
-  //   });
-    debugger
-  // this.userService.getExamsForUser(this.userService.userIdEntry, this.userService.passwordEntry).subscribe(data => {
-  //   this.userData = data.json();
-  //   // this.dataList = data.json().exams;
-  //   this.dataList = this.userData.exams;
-   
-  //   debugger
-  //   }, err => {
-  //       console.log("Error Occured")
-  //     });
-
    this.userData = this.userService.userData;
   // this.dataList = data.json().exams;
   this.dataList = this.userService.dataList;
+  debugger
+  this.userExams = this.userData.userExams;
   }
 
   selectExam(exam) {
@@ -51,6 +38,13 @@ export class HomeComponent implements OnInit {
   startExam() {
     console.log("inside startExam method")
     this.router.navigate(['/exampage']);
+  }
+
+  getExamMarks(examId) {
+    debugger;
+
+    let userExam = this.userExams.find(x => x.userExamId.examId === examId);
+    return userExam.marks;
   }
 
 

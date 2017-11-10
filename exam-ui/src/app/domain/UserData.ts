@@ -1,4 +1,5 @@
 import { Exam } from '../domain/Exam';
+import { UserExam } from '../domain/UserExam';
 
 export class UserData {
     userId: number;
@@ -8,7 +9,7 @@ export class UserData {
     active: boolean;
     entryDate: string;
     exams: Exam[];
-    
+    userExams: UserExam[];
 
     constructor(userId: number, userName: string, phone: string, email: string, active: boolean, entryDate: string) {
         this.userId = userId;

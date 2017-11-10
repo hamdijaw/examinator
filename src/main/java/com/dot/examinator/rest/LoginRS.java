@@ -14,24 +14,18 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/login")
 public class LoginRS {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private LoginService loginService;
+
+    @Autowired
+    public LoginRS(LoginService loginService) {
+        this.loginService = loginService;
+    }
 
     @PostMapping("/{userId}")
     public User getExam(@PathVariable String userId, @RequestBody UserEntitlement userEntitlement) {
         System.out.println("********User***********");
         User user = loginService.login(userId, userEntitlement.getPassword());
-//        final User exam = loginRepository.findOne(Long.parseLong(userId));
         return user;
     }
 
-    @PostMapping("/userId_2")
-    public User getQuestions(@PathVariable String userId) {
-        System.out.println("********User_2***********");
-//        final User exam = userRepository.loginUser(userId);
-//        return exam;
-        return null;
-    }
 }

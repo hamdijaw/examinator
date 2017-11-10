@@ -19,9 +19,10 @@ public class UserExamId implements Serializable {
     public UserExamId() {
     }
 
-    public UserExamId(Long userId, Long examId) {
+    public UserExamId(Long userId, Long examId, int attempt) {
         this.userId = userId;
         this.examId = examId;
+        this.attempt = attempt;
     }
 
     public Long getUserId() {
