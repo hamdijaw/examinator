@@ -1,14 +1,13 @@
+import { UserAnswerPK } from './UserAnswerPK';
+
 export class UserAnswer {
-    userId: number;
-    examId: number;
-    questionId: number;;
+    userAnswerPK: UserAnswerPK;
     answerEntered: string;
+    entryDate: string;
 
-    constructor(userId: number, examId: number, questionId: number, answerEntered: string) {
-        this.userId = userId;
-        this.examId = examId;
-        this.questionId = questionId;
+    constructor(userAnswerPK: UserAnswerPK, answerEntered: string, entryDate: string) {
+        this.userAnswerPK = userAnswerPK;
         this.answerEntered = answerEntered;
-
+        this.entryDate = entryDate;
       }
 }

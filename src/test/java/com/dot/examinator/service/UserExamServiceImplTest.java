@@ -1,8 +1,6 @@
 package com.dot.examinator.service;
 
-import com.dot.examinator.domain.UserAnswer;
-import com.dot.examinator.domain.UserExam;
-import com.dot.examinator.domain.UserExamId;
+import com.dot.examinator.domain.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -17,6 +16,18 @@ import java.util.List;
 public class UserExamServiceImplTest {
     @Autowired
     UserExamService userService;
+
+    @Test
+    public void happy_submitExam() {
+        List<UserAnswer> userAnswers = new ArrayList<>();
+        UserAnswerPK  userAnswerPK = new UserAnswerPK(18, 1, 1, 0);
+        UserAnswer userAnswer = new UserAnswer();
+        userAnswer.setUserAnswerPK(userAnswerPK);
+        userAnswers.add(userAnswer);
+        userService.submitExam(userAnswers);
+
+        System.out.println("ends-class");
+    }
 
     @Test
     public void happy_saveUserAnswer() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { UserAnswer } from '../domain/UserAnswer';
+import { UserAnswerPK } from '../domain/UserAnswerPK';
 
 @Component({
   selector: 'app-exampage',
@@ -22,6 +23,8 @@ export class ExampageComponent implements OnInit {
   nextFlag: boolean;
   prevFlag: boolean;
   examId: number;
+  userId: number;
+  attempt: number = 0;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -30,6 +33,8 @@ export class ExampageComponent implements OnInit {
     this.questionVal = this.questionDataList[this.intialIndex];
     this.questions = this.userService.questions;
     this.examId = this.userService.examId;
+    this.userId = this.userService.userData.userId;
+    //TODO set "attempt"
     this.toggleFlags();
     // debugger
     console.log('this.questions.length: ' + this.questions.length);
@@ -53,7 +58,8 @@ export class ExampageComponent implements OnInit {
       // TODO: remove hardcoding below in UserAnswer constructor
       var userAnswerTempOrig: UserAnswer =  this.userAnswerArray[this.currentIndex];
       var userAnswerOrig = userAnswerTempOrig ? userAnswerTempOrig.answerEntered : null;
-      var userAnswerTemp: UserAnswer = new UserAnswer(18, this.examId, this.questions[this.currentIndex].id, this.answerText);
+      var userAnswerPK = new UserAnswerPK(this.userId, this.examId, this.questions[this.currentIndex].id, this.attempt);
+      var userAnswerTemp: UserAnswer = new UserAnswer(userAnswerPK, this.answerText, null);//date would be set by Java
       this.userAnswerArray[this.currentIndex] = userAnswerTemp;
       // TODO: set answerText to appropriate index text value
       // this.itemArray.items[index] = newItem;
@@ -77,7 +83,8 @@ export class ExampageComponent implements OnInit {
     // }
     var userAnswerTempOrig: UserAnswer =  this.userAnswerArray[this.currentIndex];
     var userAnswerOrig = userAnswerTempOrig ? userAnswerTempOrig.answerEntered : null;
-    var userAnswerTemp: UserAnswer = new UserAnswer(18, 1, this.questions[this.currentIndex].id, this.answerText);
+    var userAnswerPK = new UserAnswerPK(this.userId, this.examId, this.questions[this.currentIndex].id, this.attempt);
+    var userAnswerTemp: UserAnswer = new UserAnswer(userAnswerPK, this.answerText, null);//date would be set by Java
     this.userAnswerArray[this.currentIndex] = userAnswerTemp;
     this.saveAnswer(userAnswerTemp, userAnswerOrig);
     var userAnswerTemp2: UserAnswer =  this.userAnswerArray[this.currentIndex - 1];
@@ -90,7 +97,10 @@ export class ExampageComponent implements OnInit {
     // if (userAnswerTemp && userAnswerTemp.answerEntered != this.answerText && this.answerText != null && this.answerText.trim().length > 0) {
       // if (userAnswerTemp && this.answerText != null && this.answerText.trim().length > 0) {
     if (userAnswerTemp && userAnswerTemp.answerEntered != oldAnswerEntered) {
+      debugger
       userAnswerTemp.answerEntered = this.answerText;
+      // userAnswerTemp.examId = this.examId;
+      // userAnswerTemp.ques
       this.userAnswer = userAnswerTemp;
       debugger
       this.userService.saveAnswer(this.userAnswer).subscribe(data => {

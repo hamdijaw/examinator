@@ -8,27 +8,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class ExamService {
-    @Autowired
-    private ExamRepository examRepository;
 
-    public List<Exam> fetchAll() {
-        final List<Exam> all = examRepository.findAll();
-        return all;
-    }
+public interface ExamService {
 
-    public Exam fetchExam(Long examId) {
-        final Exam one = examRepository.findOne(examId);
-        return one;
-    }
+    public List<Exam> fetchAll();
 
-    public void saveExam(Exam exam) {
-        examRepository.save(exam);
-    }
+    public Exam fetchExam(Long examId);
 
-    public void saveQuestion(Question question) {
-//        examRepository.save(question);
-    }
+    public void saveExam(Exam exam);
+
+    public void saveQuestion(Question question);
+
+    public void submitExam();
 
 }

@@ -48,7 +48,7 @@ public class AdminController {
 
     @PostMapping("/exam") // //new annotation since 4.3
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+                                   RedirectAttributes redirectAttributes, @RequestBody String body) {
         System.out.println("Inside File upload");
         if (file.isEmpty()) {
             System.out.println("Inside Empty");

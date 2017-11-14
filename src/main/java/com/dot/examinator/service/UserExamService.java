@@ -1,5 +1,6 @@
 package com.dot.examinator.service;
 
+import com.dot.examinator.domain.UserAnswer;
 import com.dot.examinator.domain.UserExam;
 import com.dot.examinator.domain.UserExamId;
 
@@ -10,4 +11,6 @@ public interface UserExamService {
     List<UserExam> getUserAllExam(long userId);
 
     void saveUserExam(UserExam userExam);
+
+    void submitExam(List<UserAnswer> userAnswers);
 }

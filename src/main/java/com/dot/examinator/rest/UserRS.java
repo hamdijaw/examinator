@@ -6,6 +6,7 @@ import com.dot.examinator.domain.UserAnswer;
 import com.dot.examinator.repository.ExamDaoJpa;
 import com.dot.examinator.repository.QuestionDaoJpa;
 import com.dot.examinator.repository.UserAnswerDaoJpa;
+import com.dot.examinator.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,12 +24,15 @@ public class UserRS {
     @Autowired
     private UserAnswerDaoJpa userAnswerDaoJpa;
 
-    @GetMapping(name = "/authenticate")
-    public String authenticateUser() {
-        System.out.println("*******************");
+    @Autowired
+    private ExamService examService;
 
-        return "Authenticated";
-    }
+//    @GetMapping(name = "/authenticate")
+//    public String authenticateUser() {
+//        System.out.println("*******************");
+//
+//        return "Authenticated";
+//    }
 
     @GetMapping("/exam")
     public Exam getQuestions() {
@@ -49,6 +53,11 @@ public class UserRS {
         System.out.println("********EXAM***********");
         userAnswerDaoJpa.saveAnswer(userAnswer);
         return true;
+    }
+
+    @PostMapping("/exams/submit")
+    public void submitExam() {
+
     }
 
 
