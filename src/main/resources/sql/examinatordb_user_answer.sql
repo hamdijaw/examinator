@@ -19,6 +19,16 @@
 -- Table structure for table `user_answer`
 --
 
+CREATE TABLE `examinatordb`.`user_answer` (
+  `user_id` INT NOT NULL,
+  `exam_id` INT NOT NULL,
+  `attempt` INT NOT NULL,
+  `question_id` INT NOT NULL,
+  `answer` VARCHAR(255) NULL,
+  `entryDateTime` DATETIME NULL,
+  PRIMARY KEY (`user_id`, `exam_id`, `attempt`, `question_id`));
+
+
 DROP TABLE IF EXISTS `user_answer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

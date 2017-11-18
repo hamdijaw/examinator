@@ -24,8 +24,8 @@ public class UserExamServiceImplTest {
         UserAnswer userAnswer = new UserAnswer();
         userAnswer.setUserAnswerPK(userAnswerPK);
         userAnswers.add(userAnswer);
-        userService.submitExam(userAnswers);
-
+        double v = userService.submitExam(userAnswers.get(0));
+        System.out.println("v: " + v);
         System.out.println("ends-class");
     }
 

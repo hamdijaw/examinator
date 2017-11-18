@@ -83,6 +83,18 @@ export class UserService {
 		// return exam;
 	}
 
+	submitExam(userAnswer) {
+		debugger
+
+		var dataJson = JSON.stringify(userAnswer);
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		let urlString = environment.url + environment.user + environment.exams + environment.submit;
+		debugger
+		// return this.http.post('http://localhost:8080/login/18', dataJson, {headers: headers});
+		return this.http.post(urlString, dataJson, {headers: headers});
+	}
+
 	private handleError(error: any): Promise<any> {
 		return Promise.reject(error.message || error);
 	}

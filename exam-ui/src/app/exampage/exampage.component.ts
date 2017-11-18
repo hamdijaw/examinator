@@ -44,7 +44,19 @@ export class ExampageComponent implements OnInit {
   }
  
   submitExam() {
-    
+    this.userService
+    // .getExamsForUser(this.userService.userIdEntry, this.userService.passwordEntry)
+        .submitExam(this.userAnswer)
+        .subscribe(data => {
+          debugger
+          let marksObtaibed = data.json();
+          // this.dataList = data.json().exams;
+          debugger
+          alert('you scored : ' + marksObtaibed);
+
+      }, err => {
+          console.log("Error Occured")
+        });
   }
 
   nextQuestion() {

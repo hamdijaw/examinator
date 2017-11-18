@@ -1,4 +1,4 @@
-ALTER TABLE `examinatordb`.`user_exam`
+    ALTER TABLE `examinatordb`.`user_exam`
 DROP FOREIGN KEY `exam_id`,
 DROP FOREIGN KEY `user_data_id`;
 ALTER TABLE `examinatordb`.`user_exam`

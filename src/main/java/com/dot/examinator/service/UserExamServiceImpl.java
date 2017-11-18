@@ -44,13 +44,13 @@ public class UserExamServiceImpl implements UserExamService {
     }
 
     @Override
-    public void submitExam(List<UserAnswer> userAnswers2) {
+    public double submitExam(UserAnswer userAnswer2) {
         //0. fetch List<UserAnswer>
         // . fetch correct answers from answer table
         //1. calculate user_exam marks
         //2. update user_exam with marks
         //
-        final UserAnswerPK userAnswerPK = userAnswers2.get(0).getUserAnswerPK();
+        final UserAnswerPK userAnswerPK = userAnswer2.getUserAnswerPK();
         //fetch all the question ids belonging to this exam
         final List<UserAnswer> userAnswers = userAnswerRepositoryUserAnswerPK.getUserAnwerByUserIdAndExamId(userAnswerPK.getUserId(), userAnswerPK.getExamId());
         List<Long> questionIds = new ArrayList<>();
@@ -76,7 +76,8 @@ public class UserExamServiceImpl implements UserExamService {
 //
 //        }
         System.out.println("noOfCorrectAnswers: " + noOfCorrectAnswers);
+        double v =  ((double)noOfCorrectAnswers / (double)questionIds.size());
         System.out.println("ends-class");
-
+        return v * 100.0;
     }
 }

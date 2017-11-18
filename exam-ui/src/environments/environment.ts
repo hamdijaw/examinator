@@ -7,5 +7,8 @@ export const environment = {
   production: false,
   url: 'http://localhost:8080',
   login: '/login',
-  saveAnswer: '/user/answer'
+  saveAnswer: '/user/answer',
+  user: '/user',
+  exams: '/exams',
+  submit: '/submit'
 };

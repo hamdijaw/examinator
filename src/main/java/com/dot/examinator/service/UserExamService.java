@@ -12,5 +12,5 @@ public interface UserExamService {
 
     void saveUserExam(UserExam userExam);
 
-    void submitExam(List<UserAnswer> userAnswers);
+    double submitExam(UserAnswer userAnswers);
 }
