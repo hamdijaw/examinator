@@ -1,0 +1,7 @@
+Upload Exam File:
+curl -X POST \
+  http://localhost:8080/admin/exam \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+  -H 'postman-token: bd13465c-3979-6224-d4c4-a0145875fc06' \
+  -F 'file=@E:\code_base\explore\per\examinator-de.v\exam-1.docx'
