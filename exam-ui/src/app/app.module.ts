@@ -12,15 +12,18 @@ import { ExampageComponent } from './exampage/exampage.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
+import { ExampageMcqComponent } from './exampage-mcq/exampage-mcq.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent,
     children: [
-      { path: 'exampage', component: ExampageComponent }
+      { path: 'exampage', component: ExampageComponent },
+      { path: 'exampage-mcq', component: ExampageMcqComponent }
     ] },
   { path: 'login', component: LoginComponent },
   { path: 'exampage', component: ExampageComponent },
+  { path: 'exampage-mcq', component: ExampageMcqComponent },
   { path: 'signup', component: SignupComponent }
 ]
 
@@ -32,7 +35,8 @@ const appRoutes: Routes = [
     ExampageComponent,
     SignupComponent,
     SigninComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    ExampageMcqComponent
   ],
   imports: [
     RouterModule.forRoot(

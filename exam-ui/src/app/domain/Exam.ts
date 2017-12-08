@@ -3,6 +3,6 @@ export class Exam {
 
     id: Number;
     name: String;
-    questions: Question;
+    questions: Question[];
 
 }

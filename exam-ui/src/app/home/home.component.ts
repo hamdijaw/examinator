@@ -30,7 +30,8 @@ export class HomeComponent implements OnInit {
     console.log("inside selectExam method")
     this.userService.questions = exam.questions;
     this.userService.examId = exam.id;
-    this.router.navigate(['/exampage']);
+    // this.router.navigate(['/exampage']);
+    this.router.navigate(['/exampage-mcq']);
   }
 
   userdata: any = [];
@@ -41,11 +42,10 @@ export class HomeComponent implements OnInit {
   }
 
   getExamMarks(examId) {
-    debugger;
+    // debugger;
 
     let userExam = this.userExams.find(x => x.userExamId.examId === examId);
     return userExam.marks;
   }
-
 
 }

@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-auto">
+            Question {{currentIndex + 1}}) 
+        </div>
+        <div class="col-md-8">{{questions[currentIndex].body}}</div>        
+      </div>
+  <div class="row">
+      <div class="col"><input type="radio" name="" id="option1"> a) Option-1</div>
+    </div>
+    <div class="row">
+      <div class="col"><input type="radio" name="" id="option2"> b) Option-2</div>
+  </div>
+  <div class="row">
+      <div class="col"><input type="radio" name="" id="option3"> c) Option-3</div>
+    </div>
+    <div class="row">
+      <div class="col"><input type="radio" name="" id="option4"> d) Option-4</div>
+  </div>
+  <div class="row">
+    
+    <div class="col-md-6">
+        <button (click)='previousQuestion()' [disabled]='prevFlag' style="width:100px">previous</button>
+        <button (click)='nextQuestion()' [disabled] ='nextFlag' style="width:100px">next</button>
+    </div>
+    <div class="col-md customWidth30"></div>
+    <div class="col-md-3">
+      <button (click)='submitExam()' style="width:100px">submit</button>
+    </div>
+</div>
+</div>

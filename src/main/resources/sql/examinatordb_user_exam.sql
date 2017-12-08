@@ -19,19 +19,34 @@
 -- Table structure for table `user_exam`
 --
 
-DROP TABLE IF EXISTS `user_exam`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_exam` (
   `user_id` int(11) NOT NULL,
   `exam_id` int(11) NOT NULL,
   `completed` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`user_id`,`exam_id`),
+  `exam_date` datetime DEFAULT NULL,
+  `marks` varchar(45) DEFAULT NULL,
+  `attempt` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_id`,`exam_id`,`attempt`),
   KEY `user_id_idx` (`user_id`),
   KEY `exam_id_idx` (`exam_id`),
   CONSTRAINT `exam_id` FOREIGN KEY (`exam_id`) REFERENCES `exam` (`exam_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_data_id` FOREIGN KEY (`user_id`) REFERENCES `user_data` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--DROP TABLE IF EXISTS `user_exam`;
+--/*!40101 SET @saved_cs_client     = @@character_set_client */;
+--/*!40101 SET character_set_client = utf8 */;
+--CREATE TABLE `user_exam` (
+--  `user_id` int(11) NOT NULL,
+--  `exam_id` int(11) NOT NULL,
+--  `completed` tinyint(4) DEFAULT '0',
+--  PRIMARY KEY (`user_id`,`exam_id`),
+--  KEY `user_id_idx` (`user_id`),
+--  KEY `exam_id_idx` (`exam_id`),
+--  CONSTRAINT `exam_id` FOREIGN KEY (`exam_id`) REFERENCES `exam` (`exam_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+--  CONSTRAINT `user_data_id` FOREIGN KEY (`user_id`) REFERENCES `user_data` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 

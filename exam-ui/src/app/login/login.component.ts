@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
           this.userService.userData = data.json();
           // this.dataList = data.json().exams;
           this.userService.dataList = this.userService.userData.exams;
+          debugger
           this.router.navigate(['/home']);
          
           localStorage.setItem("username", this.userService.userData.name);

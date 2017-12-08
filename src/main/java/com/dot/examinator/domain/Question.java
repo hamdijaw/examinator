@@ -44,7 +44,7 @@ public class Question {
     @JoinColumn(name = "exam_id")
     private Exam exam;*/
     @JsonBackReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", fetch = FetchType.EAGER)
     private Set<Answer> answers;
     @Transient
     private String answerChoice;//should be List<String>
