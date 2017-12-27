@@ -1,6 +1,6 @@
 package com.dot.examinator.rest;
 
-import com.dot.examinator.domain.User;
+import com.dot.examinator.domain.User_Data;
 import com.dot.examinator.domain.UserEntitlement;
 import com.dot.examinator.service.LoginService;
 
@@ -24,11 +24,11 @@ public class LoginRS {
     }
 
     @PostMapping("/{userId}")
-    public User getExam(@PathVariable String userId, @RequestBody UserEntitlement userEntitlement) {
+    public User_Data getExam(@PathVariable String userId, @RequestBody UserEntitlement userEntitlement) {
         System.out.println("********User***********");
-        User user = loginService.login(userId, userEntitlement.getPassword());
-        logger.info("User: " + user);
-        return user;
+        User_Data userData = loginService.login(userId, userEntitlement.getPassword());
+        logger.info("User: " + userData);
+        return userData;
     }
 
 }

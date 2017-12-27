@@ -83,7 +83,7 @@ public class WordFileReader implements ExamFileReader {
                             }
                         }
                         answer.setCorrect(isCorrect);
-                        answer.setQuestion(question);
+//                        answer.setQuestion(question); removed bidirectional mapping
                         question.addAnswer(answer);
                 }
             }
@@ -206,7 +206,7 @@ public class WordFileReader implements ExamFileReader {
                                 }
                             }
                             answer.setCorrect(isCorrect);
-                            answer.setQuestion(question);
+//                            answer.setQuestion(question);removed bidirectional mapping
                             question.addAnswer(answer);
                         }
                     }

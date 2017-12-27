@@ -14,6 +14,7 @@ import java.util.List;
 @Transactional
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
-    @Query("select p from Answer p where p.question.id in :questions and p.isCorrect=1")
-    List<Answer> getAnswersForQuestions(@Param("questions")List<Long> questions);
+    //TODO getting conflict of questions and answers mapping
+//    @Query("select p from Answer p where p.question.id in :questions and p.isCorrect=1")
+//    List<Answer> getAnswersForQuestions(@Param("questions")List<Long> questions);
 }

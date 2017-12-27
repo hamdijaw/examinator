@@ -3,6 +3,8 @@ import { UserService } from '../user.service';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { UserData } from '../domain/UserData';
 import { UserExam } from '../domain/UserExam';
+import { Exam } from '../domain/Exam';
+import { Question } from '../domain/Question';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +12,12 @@ import { UserExam } from '../domain/UserExam';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private userService: UserService, private router: Router) { }
-  dataList:any[];
-  questions:any[];
+  dataList: Exam[];
+  questions: Question[];
   userData: UserData;
   userExams: UserExam[];
+
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
    this.userData = this.userService.userData;

@@ -43,8 +43,10 @@ public class Question {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "exam_id")
     private Exam exam;*/
-    @JsonBackReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", fetch = FetchType.EAGER)
+//    @JsonBackReference
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "question_id")
     private Set<Answer> answers;
     @Transient
     private String answerChoice;//should be List<String>

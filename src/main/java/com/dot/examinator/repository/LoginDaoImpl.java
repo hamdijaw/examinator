@@ -1,6 +1,6 @@
 package com.dot.examinator.repository;
 
-import com.dot.examinator.domain.User;
+import com.dot.examinator.domain.User_Data;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 @Transactional
 public class LoginDaoImpl implements LoginDao {
     @Override
-    public User login(String userId, String password) {
+    public User_Data login(String userId, String password) {
         return null;
     }
 }

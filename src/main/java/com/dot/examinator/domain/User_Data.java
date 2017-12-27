@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name = "user_data")
 //@NamedQuery(name = "Person.findByName", query = "SELECT p FROM Person p WHERE LOWER(p.lastName) = LOWER(?1)")
-public class User {
+public class User_Data {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -64,9 +64,9 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
+        User_Data userData = (User_Data) o;
 
-        return userId == user.userId;
+        return userId == userData.userId;
     }
 
     @Override

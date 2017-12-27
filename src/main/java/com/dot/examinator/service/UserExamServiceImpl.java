@@ -63,13 +63,15 @@ public class UserExamServiceImpl implements UserExamService {
             }
         }
         // fetch correct answers of all the questionsIds fetched before
-        final List<Answer> answersForQuestions = answerRepository.getAnswersForQuestions(questionIds);
+//        final List<Answer> answersForQuestions = answerRepository.getAnswersForQuestions(questionIds);
         int noOfCorrectAnswers = 0;
-        for (Answer answer : answersForQuestions) {
-            final String s = StringUtils.trim(userAnswerMap.get(answer.getQuestion().getId()));
-            if (s.equalsIgnoreCase(StringUtils.trim(answer.getBody()))) {
-                noOfCorrectAnswers++;
-            }
+//        for (Answer answer : answersForQuestions)
+        {
+//            final String s = StringUtils.trim(userAnswerMap.get(answer.getQuestion().getId()));
+//      //TODO: change the logic of correct answer
+//     if (s.equalsIgnoreCase(StringUtils.trim(answer.getBody()))) {
+//                noOfCorrectAnswers++;
+//            }
         }
         //compare the correct answers fetched above with answers entered by user
 //        for () {

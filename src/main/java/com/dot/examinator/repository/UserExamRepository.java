@@ -1,15 +1,11 @@
 package com.dot.examinator.repository;
 
-import com.dot.examinator.domain.User;
 import com.dot.examinator.domain.UserExam;
 import com.dot.examinator.domain.UserExamId;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Repository
 @Transactional

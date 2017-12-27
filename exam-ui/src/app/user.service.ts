@@ -5,17 +5,19 @@ import 'rxjs/add/operator/toPromise';
 import { UserAnswer } from './domain/UserAnswer';
 import {environment} from 'environments/environment';
 import { UserData } from './domain/UserData';
+import { Exam } from './domain/Exam';
+import { Question } from './domain/Question';
 
 // http://localhost:8080/examhttp://localhost:8080/user/authenticate
 @Injectable()
 export class UserService {
-	questions:any[];
+	questions: Question[];
 	examId: number;
 	test: any = "";
 	userIdEntry: string;
 	passwordEntry: string;
 	userData: UserData;
-	dataList:any[];
+	dataList: Exam[];
 	
 	constructor(private http: Http) { }
 
@@ -28,7 +30,7 @@ export class UserService {
 	}
 
 	getExamsForUser(userIdEntryByUser, passwordEntryByUser) {
-		debugger
+		// debugger
 		let data = {
 			'userId': userIdEntryByUser,
 			'password': passwordEntryByUser

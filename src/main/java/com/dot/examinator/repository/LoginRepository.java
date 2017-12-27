@@ -1,7 +1,5 @@
 package com.dot.examinator.repository;
 
-import com.dot.examinator.domain.Exam;
-import com.dot.examinator.domain.User;
 import com.dot.examinator.domain.UserEntitlement;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

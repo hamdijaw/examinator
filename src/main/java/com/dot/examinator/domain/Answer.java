@@ -18,10 +18,10 @@ public class Answer {
     private String body;
     @Column(name = "is_Correct")
     private boolean isCorrect;
-    @JsonManagedReference
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "question_id")
-    private Question question;
+//    @JsonManagedReference
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "question_id")
+//    private Question question;
 
     public Answer() {
     }
@@ -32,7 +32,7 @@ public class Answer {
 
     public Answer(String body, Question question) {
         this.body = body;
-        this.question = question;
+//        this.question = question;
     }
 
     public String getBody() {
@@ -51,13 +51,13 @@ public class Answer {
         isCorrect = correct;
     }
 
-    public Question getQuestion() {
-        return question;
-    }
+//    public Question getQuestion() {
+//        return question;
+//    }
 
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
+//    public void setQuestion(Question question) {
+//        this.question = question;
+//    }
 
     @Override
     public boolean equals(Object o) {
