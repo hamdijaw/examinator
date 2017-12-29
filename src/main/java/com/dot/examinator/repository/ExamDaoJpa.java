@@ -1,6 +1,7 @@
 package com.dot.examinator.repository;
 
 import com.dot.examinator.domain.Exam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,10 +14,13 @@ import java.util.List;
 public class ExamDaoJpa {
     @PersistenceContext
     private EntityManager entityManager;
+    @Autowired
+    private ExamRepository examRepository;
 
     public void saveExam(Exam exam) {
         System.out.println("*********JPA called");
-        entityManager.persist(exam);
+//        entityManager.persist(exam);
+        examRepository.save(exam);
         System.out.println("******Exam saved successfully******");
     }
     @SuppressWarnings("unchecked")

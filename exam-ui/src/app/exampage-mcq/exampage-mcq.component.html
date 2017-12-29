@@ -1,26 +1,34 @@
 <div class="container">
+        <div class="row top-buffer"></div>
     <div class="row">
         <div class="col-md-auto">
             Question {{currentIndex + 1}}) 
         </div>
         <div class="col-md-8">{{questions[currentIndex].body}}</div>        
       </div>
+      <div class="row top-buffer"></div>
   <div class="row">
-      <div class="col"><input type="radio" name="" id="option1"> a) {{questions[currentIndex].answers[0].body}}</div>
+        <div class="col-md-1"></div>
+      <div class="col top-buffer-between-rows"><input type="radio" name="" id="option1"> a) {{questions[currentIndex].answers[0].body}}</div>
     </div>
     <div class="row">
-      <div class="col"><input type="radio" name="" id="option2"> b) {{questions[currentIndex].answers[1].body}}</div>
+            <div class="col-md-1"></div>
+      <div class="col top-buffer-between-rows"><input type="radio" name="" id="option2"> b) {{questions[currentIndex].answers[1].body}}</div>
   </div>
   <div class="row">
+        <div class="col-md-1"></div>
       <div class="col"><input type="radio" name="" id="option3"> c) {{questions[currentIndex].answers[2].body}}</div>
     </div>
     <div class="row">
+            <div class="col-md-1"></div>
       <div class="col"><input type="radio" name="" id="option4"> d) {{questions[currentIndex].answers[3].body}}</div>
   </div>
-  <div class="row">
-    
-    <div class="col-md-6">
+  <div class="row top-buffer ">
+        <div class="col-md-1"></div>
+    <div class="col-md-3 text-align-left">
         <button (click)='previousQuestion()' [disabled]='prevFlag' style="width:100px">previous</button>
+    </div>
+    <div class="col-md-3 text-align-right">
         <button (click)='nextQuestion()' [disabled] ='nextFlag' style="width:100px">next</button>
     </div>
     <div class="col-md customWidth30"></div>
