@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
    this.userData = this.userService.userData;
   // this.dataList = data.json().exams;
   this.dataList = this.userService.dataList;
-  debugger
+  // debugger
   this.userExams = this.userData.userExams;
   }
 

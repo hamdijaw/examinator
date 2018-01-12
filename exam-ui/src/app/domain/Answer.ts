@@ -1,4 +1,6 @@
 export class Answer {
-    id: Number;
-    body: String;
+    id: number;
+    body: string;
+    isCorrect: boolean;
+    selected: boolean;
 }

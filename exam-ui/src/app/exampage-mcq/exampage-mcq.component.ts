@@ -44,6 +44,15 @@ export class ExampageMcqComponent implements OnInit {
     // debugger
   }
  
+  chooseAnswer(answer) {
+    console.log("answer entered: " + answer.body);
+    // var userAnswerPK = new UserAnswerPK(this.userId, this.examId, this.questions[this.currentIndex].id, this.attempt);
+    // var userAnswerTemp: UserAnswer = new UserAnswer(userAnswerPK, answer.id, null);//date would be set by Java
+    // this.userAnswerArray[this.currentIndex] = userAnswerTemp;
+    this.answerText = answer.id;
+    debugger
+  }
+
   submitExam() {
     this.userService
     // .getExamsForUser(this.userService.userIdEntry, this.userService.passwordEntry)
@@ -81,7 +90,7 @@ export class ExampageMcqComponent implements OnInit {
       // insert into an array
       // this.userAnswerArray.splice(this.currentIndex, 0, userAnswerTemp);
       this.saveAnswer(userAnswerTemp, userAnswerOrig);
-      debugger;
+      // debugger;
       var userAnswerTemp2: UserAnswer =  this.userAnswerArray[this.currentIndex + 1];
       this.answerText = userAnswerTemp2 ? userAnswerTemp2.answerEntered : null;
       this.currentIndex = this.currentIndex + 1;
@@ -109,13 +118,15 @@ export class ExampageMcqComponent implements OnInit {
   saveAnswer(userAnswerTemp, oldAnswerEntered) {
     // if (userAnswerTemp && userAnswerTemp.answerEntered != this.answerText && this.answerText != null && this.answerText.trim().length > 0) {
       // if (userAnswerTemp && this.answerText != null && this.answerText.trim().length > 0) {
-    if (userAnswerTemp && userAnswerTemp.answerEntered != oldAnswerEntered) {
-      debugger
+        debugger
+      if (userAnswerTemp && userAnswerTemp.answerEntered != oldAnswerEntered) 
+      {
+        debugger
       userAnswerTemp.answerEntered = this.answerText;
       // userAnswerTemp.examId = this.examId;
       // userAnswerTemp.ques
       this.userAnswer = userAnswerTemp;
-      debugger
+      
       this.userService.saveAnswer(this.userAnswer).subscribe(data => {
         console.log('answer saved successfully');
         console.log('java returned: ' + data.text);

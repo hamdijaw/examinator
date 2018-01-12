@@ -73,4 +73,12 @@ public class Answer {
     public int hashCode() {
         return body != null ? body.hashCode() : 0;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

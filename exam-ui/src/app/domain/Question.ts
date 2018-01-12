@@ -1,6 +1,7 @@
 import { Answer } from './Answer';
 export class Question {
-    id: Number;
-    body: String;
+    id: number;
+    body: string;
+    selected: string;
     answers: Answer[];
 }

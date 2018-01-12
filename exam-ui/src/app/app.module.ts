@@ -13,6 +13,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { ExampageMcqComponent } from './exampage-mcq/exampage-mcq.component';
+import { TimerComponent } from './timer/timer.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     SignupComponent,
     SigninComponent,
     AppHeaderComponent,
-    ExampageMcqComponent
+    ExampageMcqComponent,
+    TimerComponent
   ],
   imports: [
     RouterModule.forRoot(

@@ -23,7 +23,7 @@ export class UserService {
 
 
 	saveAnswer(answer:UserAnswer) {
-		debugger
+		// debugger
 		let urlString = environment.url + environment.saveAnswer;
 		// return this.http.post('http://localhost:8080/user/answer', answer);
 		return this.http.post(urlString, answer);

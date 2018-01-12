@@ -14,6 +14,12 @@ import java.util.Set;
 @Table(name = "exam")
 public class Exam2 {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_generator")
+    @SequenceGenerator(name="book_generator", sequenceName = "book_seq", allocationSize=50, initialValue = 12)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id2;
+
     public Exam2() {
 
     }

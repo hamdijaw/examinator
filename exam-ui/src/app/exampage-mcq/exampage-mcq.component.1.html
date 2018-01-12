@@ -1,5 +1,4 @@
 <div class="container">
-        <app-timer></app-timer>
         <div class="row top-buffer"></div>
     <div class="row">
         <div class="col-md-auto">
@@ -8,15 +7,21 @@
         <div class="col-md-8">{{questions[currentIndex].body}}</div>        
       </div>
       <div class="row top-buffer"></div>
-
-  <div class="radio" *ngFor="let answer of questions[currentIndex].answers">
-      <label>
-          <!-- <input type="radio" name="answer" ngModel [value]="answer.body"> -->
-          <input type="radio" [(ngModel)]="questions[currentIndex].selected" [value]="answer.id"
-           [checked]="questions[currentIndex].selected == answer.id"
-           (ngModelChange)="chooseAnswer(answer)"
-          > {{answer.body}}
-      </label>
+  <div class="row">
+        <div class="col-md-1"></div>
+      <div class="col top-buffer-between-rows"><input type="radio" name="question" id="option1"> a) {{questions[currentIndex].answers[0].body}}</div>
+    </div>
+    <div class="row">
+            <div class="col-md-1"></div>
+      <div class="col top-buffer-between-rows"><input type="radio" name="question" id="option2"> b) {{questions[currentIndex].answers[1].body}}</div>
+  </div>
+  <div class="row">
+        <div class="col-md-1"></div>
+      <div class="col"><input type="radio" name="question" id="option3"> c) {{questions[currentIndex].answers[2].body}}</div>
+    </div>
+    <div class="row">
+            <div class="col-md-1"></div>
+      <div class="col"><input type="radio" name="question" id="option4"> d) {{questions[currentIndex].answers[3].body}}</div>
   </div>
   <div class="row top-buffer ">
         <div class="col-md-1"></div>
