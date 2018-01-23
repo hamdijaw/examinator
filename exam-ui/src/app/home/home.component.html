@@ -9,7 +9,8 @@
   <div>
   <ul (click)="selectExam()" class="list-unstyled">
     <li *ngFor="let exam of dataList" (click)="selectExam(exam)" >
-          <a href="#" [routerLink]="['exampage']">{{ exam.id }} - {{ exam.name }} -{{getExamMarks(exam.id)}}  Marks</a>    
+          <a href="#" [routerLink]="['exampage']">{{ exam.id }} - {{ exam.name }} - 
+            {{exam.duration}} minutes - {{ getExamMarks(exam.id )}}  Marks</a>    
     </li>
   </ul>
 </div>

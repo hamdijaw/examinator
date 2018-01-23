@@ -30,6 +30,7 @@ public class Exam {
     @Column(name = "exam_id")
     private long id;
     private String name;
+    private Long duration;
     @Transient
     @Column(name = "createdDate")
     private java.sql.Date createdDate;
@@ -79,6 +80,14 @@ public class Exam {
 //
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
+    }
+
+    public Long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Long duration) {
+        this.duration = duration;
     }
 
     @Override

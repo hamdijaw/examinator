@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   selectExam(exam) {
     // debugger
     console.log("inside selectExam method")
+    this.userService.exam = exam;
     this.userService.questions = exam.questions;
     this.userService.examId = exam.id;
     // this.router.navigate(['/exampage']);

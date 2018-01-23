@@ -1,5 +1,5 @@
 <div class="container">
-        <app-timer></app-timer>
+        <app-timer [duration]="exam.duration" (timeup)="examEnded($event)"></app-timer>
         <div class="row top-buffer"></div>
     <div class="row">
         <div class="col-md-auto">

@@ -13,6 +13,7 @@ import { Question } from './domain/Question';
 export class UserService {
 	questions: Question[];
 	examId: number;
+	exam: Exam;
 	test: any = "";
 	userIdEntry: string;
 	passwordEntry: string;

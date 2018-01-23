@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { UserAnswer } from '../domain/UserAnswer';
 import { UserAnswerPK } from '../domain/UserAnswerPK';
+import { Exam } from '../domain/Exam';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-exampage-mcq',
@@ -14,6 +16,7 @@ export class ExampageMcqComponent implements OnInit {
   intialIndex: any = 0;
   questionDataList: any = [];
   questionVal: any = {};
+  exam: Exam;
   questions: any = [];
   currentIndex: number = 0;
   userAnswer: UserAnswer;
@@ -25,13 +28,15 @@ export class ExampageMcqComponent implements OnInit {
   examId: number;
   userId: number;
   attempt: number = 0;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.questionDataList = this.userService.getQuestions();
     this.maxIndex = this.questionDataList.length;
     this.questionVal = this.questionDataList[this.intialIndex];
+    this.exam = this.userService.exam;
     this.questions = this.userService.questions;
+
     debugger
     this.examId = this.userService.examId;
     this.userId = this.userService.userData.userId;
@@ -42,6 +47,10 @@ export class ExampageMcqComponent implements OnInit {
     console.log('this.questions[0]: ' + this.questions[0]);
     console.log('this.questions[0].body: ' + this.questions[0].body);
     // debugger
+  }
+
+  examEnded(event) {
+    this.router.navigate(['/home']);
   }
  
   chooseAnswer(answer) {

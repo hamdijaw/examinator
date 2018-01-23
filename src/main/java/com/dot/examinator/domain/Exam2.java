@@ -10,8 +10,8 @@ import java.util.Set;
 /**
  * Created by hamid on 11-Mar-17.
  */
-@Entity
-@Table(name = "exam")
+//@Entity
+//@Table(name = "exam")
 public class Exam2 {
 
     @Id
