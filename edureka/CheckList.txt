@@ -1,0 +1,29 @@
+Edureka::::
+Eureka - Done
+Ribbon - "Not Done"
+Zuul - done without Eureka - https://spring.io/guides/gs/routing-and-filtering/ - "Not Done"
+EHCache - https://memorynotfound.com/spring-boot-ehcache-2-caching-example-configuration/ - "Done" (requires spring-boot-starter-cache)
+Transaction Management - "Not Done"
+SpringBoot return xml: http://www.javainuse.com/spring/spring-boot-content-negotiation - "Not Done"
+Spring boot: Reload without start - "Not Done"
+Hystrix: Circuit Breaker
+DDD vs Model Driven Design : "Not Done"
+
+---------------------
+
+1. Spring Initializr: Eureka Server
+2. Spring Boot: @EnableEurekaServer
+
+	application.properties::	
+	server.port=8761
+	eureka.client.register-with-eureka=false
+	eureka.client.fetch-registry=false
+	logging.level.com.netflix.eureka=OFF
+	logging.level.com.netflix.discovery=OFF
+	
+3. Spring Boot: @EnableEurekaClient
+
+	application.properties::
+	spring.application.name=client-2
+	eureka.client.serviceUrl.defaultZone=http://127.0.0.1:8761/eureka/
+	server.port=8081
