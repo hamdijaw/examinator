@@ -1,0 +1,23 @@
+1. Access Token - pwd
+http://localhost:8082/oauth-4/oauth/token?grant_type=password&username=bill&password=abc123
+postman: username: my-trusted-client; pwd: secret
+Response:
+{
+    "access_token": "c13c4d4f-8b8f-4abc-84a3-d2fe55f76d2e",
+    "token_type": "bearer",
+    "refresh_token": "878d9b7d-fa6e-4712-bf79-0cc3e01c78c3",
+    "expires_in": 119,
+    "scope": "read write trust"
+}
+
+2. Refresh_Token
+http://localhost:8082/oauth-4/oauth/token?grant_type=refresh_token&refresh_token=2cb89d95-5e7e-4b58-a077-14ea283a4b48
+postman: username: my-trusted-client; pwd: secret
+
+{
+    "access_token": "5c28ee85-9a2c-4200-8bc3-5d8998735bd9",
+    "token_type": "bearer",
+    "refresh_token": "2cb89d95-5e7e-4b58-a077-14ea283a4b48",
+    "expires_in": 120,
+    "scope": "read write trust"
+}
