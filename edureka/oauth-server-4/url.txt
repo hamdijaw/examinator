@@ -1,3 +1,6 @@
+Taken From:
+http://websystique.com/spring-security/secure-spring-rest-api-using-oauth2/
+
 1. Access Token - pwd
 http://localhost:8082/oauth-4/oauth/token?grant_type=password&username=bill&password=abc123
 postman: username: my-trusted-client; pwd: secret
