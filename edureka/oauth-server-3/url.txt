@@ -1,0 +1,2 @@
+1. Token with Username-Pwd
+curl -X POST --user 'clientIdPassword:secret' -d 'grant_type=password&username=john&password=123' http://localhost:8081/spring-security-oauth-server/oauth/token	
