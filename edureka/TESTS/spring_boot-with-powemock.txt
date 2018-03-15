@@ -1,0 +1,13 @@
+@RunWith(PowerMockRunner.class)
+@SpringBootTest(webEnvironment = WebEnvironment.MOCK,classes = SpringTestConfig.class)
+@PowerMockRunnerDelegate(SpringRunner.class)
+@PrepareForTest(IdGenerator.class)
+public class RestTestIT {
+
+}
+
+@ContextConfiguration
+public class SpringTestConfig
+{
+
+}
