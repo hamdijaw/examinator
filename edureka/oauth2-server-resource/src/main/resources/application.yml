@@ -1,0 +1,23 @@
+#server:
+#  port: 9997
+#security:
+#  user:
+#    name: root
+#    password: password
+#  oauth2:
+#    client:
+#      client-id: acme
+#      client-secret: secret
+#    resource:
+##      loadBalanced: true
+#      userInfoUri: http://localhost:9999/user
+#security:
+##  basic:
+##    enabled: false
+#  user:
+#    name: root
+#    password: password
+#  oauth2:
+#    client:
+#      client-id: acme
+#      client-secret: secret
