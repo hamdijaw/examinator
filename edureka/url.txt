@@ -1,0 +1,101 @@
+18-Apr-2018
+
+
+16-Apr-2018
+OAuth: SSO Single sign on with Github
+1.@EnableOAuth2Sso
+Token is issued to /login page from Github
+2. @Autowired OAuth2ClientContext context;
+OAuth2AccessToken token = context.getAccessToken();
+
+-
+Resource Server:
+@EnableResourceServer
+ extends ResourceServerConfigurerAdapter
+application.properties
+security.oauth2.resource.user-info-uri: http://api.github.com/user
+security.oauth2.resource.user-info-uri: http://localhost:9001/user
+-
+Authorization Server:
+@EnableAuthorizationServer
+@EnableResourceServer
+@RestController
+@GetMapping("/user")
+public Principal user(Principal user) { return user; }
+application.properties
+security.user.name=richard
+security.user.password=password
+security.user.role=USER
+security.oauth2.client.client-id=pluralsight
+security.oauth2.client.client-secret=pluralsightsecret
+security.oauth2.client.authorization-grant-types=authorization_code, refresh_token, password, client-credentials
+security.oauth2.client.scope=toll_read, toll_report
+//replace richard/password/role from properties file to Java code
+SrviceConfig extends GlobalAuthenticationConfigurerAdapter 
+@Override public void init(AuthenticaionManagerBuilder auth) throws Exception {
+	auth.inMemoryAuthentication.withUser("user-1").password("pass-1").roles("USER", "ADMIN");
+}
+
+-Hands on
+Using generated security password: f1887ba7-17ff-46f7-bd63-b8a79deb4737
+security.oauth2.client.client-id = pluralsight
+security.oauth2.client.client-secret = ****
+/** NOT WORKING
+curl pluralsight:pluralsightsecret@localhost:9000/oauth/token -d grant_type=client_credentials
+-not working grant-type=authorization_code
+curl pluralsight:pluralsightsecret@localhost:9000/oauth/token -d grant_type=authorization_code
+{"access_token":"370592fd-b9f8-452d-816a-4fd5c6b4b8a6","token_type":"bearer","expires_in":43199,"scope":"read write"}
+
+*/
+
+request for token with password:
+curl pluralsight:pluralsightsecret@localhost:9000/oauth/token -d grant_type=password -d username=user -d password=373f6042-2c92-4eec-ac00-3ef543084d2a
+response:
+{"access_token":"d75e8c48-eeda-4e91-add7-29e14eeea035","token_type":"bearer","refresh_token":"2233c0db-a861-449a-bfec-5113611003db","expires_in":42405,"scope":"toll_read toll_report"}
+
+
+
+curl -v -H "Authorization: Bearer d75e8c48-eeda-4e91-add7-29e14eeea035" http://localhost:8080/client-2/person
+curl -v -H "Authorization: Bearer d75e8c48-eeda-4e91-add7-29e14eeea035" http://localhost:8080/client-2/person-xml
+
+--refresh_token
+curl --request POST \
+  --url 'https://YOUR_AUTH0_DOMAIN/oauth/token' \
+  --header 'content-type: application/json' \
+  --data '{ "grant_type": "refresh_token", "client_id": "YOUR_CLIENT_ID", "client_secret": "YOUR_CLIENT_SECRET", "refresh_token": "c1f860b8-7192-48f5-8017-9b575eeef27a" }'
+curl --request POST \
+  --url 'pluralsight:pluralsightsecret@localhost:9000/oauth/token' \
+  --header 'content-type: application/json' \
+  --data '{ "grant_type": "refresh_token", "client_id": "pluralsight", "pluralsightsecret": "YOUR_CLIENT_SECRET", "refresh_token": "c1f860b8-7192-48f5-8017-9b575eeef27a" }'
+curl --data 'client_id=pluralsight&client_secret=pluralsightsecret&refresh_token=c1f860b8-7192-48f5-8017-9b575eeef27&grant_type=refresh_token' https://localhost:9000/oauth2/token
+curl http://localhost:9000/oauth/token?grant_type=refresh_token&refresh_token=c1f860b8-7192-48f5-8017-9b575eeef27a&client_id=pluralsight&client_secret=pluralsightsecret
+https://www.googleapis.com/oauth2/v4/token?grant_type=refresh_token&refresh_token={your_refresh_token}&client_id={your_client_id}&client_secret={your_client_secret}
+curl http://localhost:9000/oauth/token?grant_type=refresh_token&refresh_token=c1f860b8-7192-48f5-8017-9b575eeef27a
+request for token with refresh_token: NOT WORKING
+curl http://localhost:9000/oauth/token -d grant_type=refresh_token -d refresh_token=c1f860b8-7192-48f5-8017-9b575eeef27a
+curl -v --data "grant_type=refresh_token&client_id=pluralsight&refresh_token=a1eb1f77-6c5a-41e2-961b-1b58dad53750" http://localhost:9000/oauth/token
+curl -H "Authorization: Bearer [base64encode(pluralsight:pluralsightsecret)]" "https://yourdomain.com/oauth/token?grant_type=refresh_token&refresh_token=[yourRefreshToken]"
+
+curl pluralsight:pluralsightsecret@localhost:9000/oauth/token -d grant_type=refresh_token -d refresh_token=a1eb1f77-6c5a-41e2-961b-1b58dad53750
+
+
+
+----------
+Microservice Security:
+--Cross-Cutting Concern - can be handled by AOP/Spring Security
+--Downside of security - incovenience to the users but an acceptable inconvenience
+--OpenID eg Facebook, Gmail, LinkedIn, Twitter, Github
+API Gateway : Single point of entry + Diagram + Zuul Router + AWS
+--APIs, Acess Controls, and Gateways
+If you break our API, you have HTTP-only access to our microservices: limit what can be done in HTTP, open only HTTP access from your Cloud itself and it is enough for our needs. A rule of thumb we applied to many microservices: no access to DB. Just process JSONs and reach other microservices or API itself again.
+Security domain boundaries – role-based authentication in place. Identification and authentication – propagate security from the database tier to the application API – who can access, deploy, scale. Do not lose control over the service.
+API access control for microservices. Borrowing open-web API capability. Put together standards for access control in the API architecture – certificates, tokens, networks using Torch, Kubernetes, and CloudFoundry.
+Need API gateway key or login. SSL at the transport layer. Whitelist ISPs that can access.
+JSON Web Tokens, Amazon Virtual Private Cloud, and API Gateway pattern.
+API gateways.
+There are no silver bullets. We take a layered approach with coding standards, peer reviews, automated testing, and third-party pen testing. More secure profile in public with APIs.
+API gateways are the most commonly used solution, and with good reason – they provide many great out-of-the box management services in addition to security. But when we’re talking standalone microservices, OpenID and OAuth is the way to go.
+Make sure you are doing regular security scans and that you have no leaks. Docker has security scanning. All talking via APIs. One single point of entry with API gateways and security platforms.
+API security is just as critical as application security. Not just native first-party apps. That’s where ID becomes more critical. Need to integrate to the identity layer- how to onboard, how to authorize access and have end-to-end coverage from the frontend to the backend. More complex patterns from the developer perspective. Not just front door access security. Zero-trust architecture.
+APIs are an effective way to build governance right into the microservices architecture. APIs become these contracts by the developers on what the microservices will do and more importantly what it won't do. This makes it easy for central IT to govern these microservices since their SLAs can be managed through API gateways that act as proxies for the microservices. This ensures that there is the right balance of governance for IT and flexibility for the domain teams.
+Encrypt all data at rest.
